@@ -1,3 +1,4 @@
+using ECommerce.Api.Middleware;
 using ECommerce.Application.Interfaces;
 using ECommerce.Application.Mapping;
 using ECommerce.Application.Police;
@@ -12,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -130,6 +132,9 @@ builder.Services.AddAuthorization(policy =>
     policy.AddPolicy("CanShow", p => p.RequireRole("Admin", "Customer"));
 });
 
+//serilog
+Log.Logger = new LoggerConfiguration().MinimumLevel.Information().WriteTo.Console().CreateLogger();
+builder.Host.UseSerilog();
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope()) // هنا بحجز حاجه اسمها scope وانا اصلا مش فاهمها 
@@ -153,6 +158,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthentication();
 

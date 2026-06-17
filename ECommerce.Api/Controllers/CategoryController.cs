@@ -16,7 +16,7 @@ public class CategoryController : ControllerBase
         _categoryService = categoryService;
     }
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Customer")]
     [HttpPost]
     public IActionResult Create(CreateCategoryDto dto)
     {
@@ -25,7 +25,7 @@ public class CategoryController : ControllerBase
         if (!result)
             return BadRequest("Invalid category data");
 
-        return Ok("Category created successfully");
+        throw new Exception("Test Exception");
     }
 
     // 🟢 Get All Categories
