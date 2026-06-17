@@ -42,7 +42,9 @@ namespace ECommerce.Api.Middleware
                 var response = new
                 {
                     message = "Something went wrong",
-                    statusCode = 500
+                    statusCode = 500,
+                    
+                    
                 };
 
                 await context.Response.WriteAsync(JsonSerializer.Serialize(response));

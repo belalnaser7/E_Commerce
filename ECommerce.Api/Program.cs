@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
@@ -133,7 +132,14 @@ builder.Services.AddAuthorization(policy =>
 });
 
 //serilog
-Log.Logger = new LoggerConfiguration().MinimumLevel.Information().WriteTo.Console().CreateLogger();
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/log.txt",
+    rollingInterval: RollingInterval.Day,
+    outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss}] [{Level:u3}] UserId={UserId} Path={RequestPath} Message={Message}{NewLine}")
+    .CreateLogger();
 builder.Host.UseSerilog();
 var app = builder.Build();
 
@@ -163,7 +169,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 app.UseAuthentication();
 
 app.UseAuthorization();
-
+app.UseMiddleware<SerilogEnrichmentMiddleware>();
 app.MapControllers();
 
 app.Run();
