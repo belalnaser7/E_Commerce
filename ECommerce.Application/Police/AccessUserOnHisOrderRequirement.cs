@@ -1,0 +1,13 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ECommerce.Application.Police
+{
+    public class AccessUserOnHisOrderRequirement:IAuthorizationRequirement
+    {
+    }
+}
