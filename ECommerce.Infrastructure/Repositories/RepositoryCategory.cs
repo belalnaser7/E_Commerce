@@ -19,6 +19,13 @@ namespace ECommerce.Infrastructure.Repositories
 
         public Category? GetById(int id) =>
            context.Categories.FirstOrDefault(d => d.Id == id);
+        public bool IsExist(string name) 
+        {
+            var Exist=context.Categories.Any(k => k.Name == name);
+           
+            return Exist;
+        }
+        
 
 
         public void Save() =>

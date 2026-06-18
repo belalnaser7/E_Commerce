@@ -25,24 +25,16 @@ namespace ECommerce.Api.Controllers
         {
             var userid = User.GetUserid();
             
-            var checkout = servicesOrder.Checkout(userid, dto);
-            if (!checkout)
-            {
-                return BadRequest();
-            }
-            return Ok();
+            var result = servicesOrder.Checkout(userid, dto);
+            return result.ToActionResult();
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet("user/{userId}")]
+        [HttpGet("user/{userid}")]
         public async Task<IActionResult> GetOrders(string userid)
         {
-            var orders = servicesOrder.GetOrders(userid);
-            if (orders is null)
-            {
-                return NotFound();
-            }
-            return Ok(orders);
+            var result = servicesOrder.GetOrders(userid);
+            return result.ToActionResult();
         }
 
         [Authorize(Roles = "Customer")]
@@ -50,30 +42,26 @@ namespace ECommerce.Api.Controllers
         public async Task<IActionResult> GetOrders()
         {
             var userid = User.GetUserid();
-            var orders = servicesOrder.GetOrders(userid);
-            if (orders is null)
-            {
-                return NotFound();
-            }
-            return Ok(orders);
+            var result = servicesOrder.GetOrders(userid);
+            return result.ToActionResult();
         }
        
         [HttpGet("{OrderId}")]
         public async Task<IActionResult> GetOrder(int OrderId)
         {
             var order = servicesOrder.GetEntityById(OrderId);
-            if (order is null)
+            if (!order.IsSuccess)
             {
-                return NotFound();
+                return order.ToActionResult();
             }
-            var result = await authorizationService.AuthorizeAsync(User, order, new AccessUserOnHisOrderRequirement());
+            var result = await authorizationService.AuthorizeAsync(User, order.Data, new AccessUserOnHisOrderRequirement());
             if (!result.Succeeded)
             {
                 return Forbid();
             }
-            var orderbyid = servicesOrder.GetOrderById(OrderId);
+            var result1 = servicesOrder.GetOrderById(OrderId);
 
-            return Ok(orderbyid);
+            return result1.ToActionResult();
         }
     }
 }

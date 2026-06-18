@@ -1,0 +1,48 @@
+[2026-06-17 23:45:52] [INF] UserId= Path= Message=Executed DbCommand ("214"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-17 23:45:52] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-17 23:45:52] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-17 23:45:52] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-17 23:45:52] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-17 23:45:52] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-17 23:45:52] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-17 23:45:52] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-17 23:45:55] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-17 23:45:55] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 659.9417ms
+[2026-06-17 23:45:55] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-17 23:45:55] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-17 23:45:55] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 7.9207ms
+[2026-06-17 23:45:57] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 1320.4832ms
+[2026-06-17 23:45:57] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-17 23:45:57] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 36.1206ms
+[2026-06-17 23:46:26] [INF] UserId= Path=/api/Auz/Login Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - "application/json" 49
+[2026-06-17 23:46:26] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executing endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-17 23:46:26] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Route matched with "{action = \"Login\", controller = \"Auz\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ECommerce.Application.DTOs.LoginDto)" on controller "ECommerce.Api.Controllers.AuzController" ("ECommerce.Api").
+[2026-06-17 23:46:26] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed DbCommand ("155"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0"
+[2026-06-17 23:46:27] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[2026-06-17 23:46:27] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.LoginResponseDto"'.
+[2026-06-17 23:46:27] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed action "ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)" in 585.6011ms
+[2026-06-17 23:46:27] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-17 23:46:27] [INF] UserId= Path=/api/Auz/Login Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - 200 null "application/json; charset=utf-8" 694.4413ms
+[2026-06-17 23:47:16] [INF] UserId= Path=/api/Category Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Category""" - "application/json" 43
+[2026-06-17 23:47:16] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.Create (ECommerce.Api)"'
+[2026-06-17 23:47:16] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Route matched with "{action = \"Create\", controller = \"Category\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Create(ECommerce.Application.DTOs.CreateCategoryDto)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-17 23:47:16] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-17 23:47:16] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executed action "ECommerce.Api.Controllers.CategoryController.Create (ECommerce.Api)" in 5.2432ms
+[2026-06-17 23:47:16] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.Create (ECommerce.Api)"'
+[2026-06-17 23:47:16] [INF] UserId= Path=/api/Category Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Category""" - 400 null "text/plain; charset=utf-8" 102.3036ms

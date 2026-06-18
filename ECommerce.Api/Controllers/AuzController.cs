@@ -1,4 +1,5 @@
-﻿using ECommerce.Application.DTOs;
+﻿using ECommerce.Api.Extentions;
+using ECommerce.Application.DTOs;
 using ECommerce.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -25,11 +26,7 @@ namespace ECommerce.Api.Controllers
                 return BadRequest(ModelState);
 
             var result=await servicesRegister.Register(dto);
-            if (!result.Success)
-            {
-                return BadRequest(result.Errors);
-            }
-            return Ok();
+            return result.ToActionResult();
         }
         [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginDto login)
@@ -39,20 +36,10 @@ namespace ECommerce.Api.Controllers
                 return BadRequest(ModelState);
             }
             var result = await servicesRegister.Login(login);
-            if (result is null)
-            {
-                return BadRequest();
-            }
-            return Ok(result);
+
+            return result.ToActionResult();
 
         }
-
-        //[Authorize(Roles = "Customer")]
-        //[HttpGet("admin")]
-        //public IActionResult AdminOnly()
-        //{
-        //    return Ok("Welcome Admin");
-        //}
 
 
     }

@@ -1,4 +1,5 @@
 ﻿using ECommerce.Application.DTOs;
+using ECommerce.Application.Result_pattern;
 using ECommerce.Domain.Domain_Models;
 using System;
 using System.Collections.Generic;
@@ -10,11 +11,11 @@ namespace ECommerce.Application.Interfaces
 {
     public interface IServicesCategory
     {
-        IEnumerable<CategoryDto> GetAll();
-        CategoryDto? GetById(int id);
-        bool Del(int id);
-        bool Update(int id, UpdateCategotyDto dto);
-        bool Add(CreateCategoryDto dto);
+        public Result<IEnumerable<CategoryDto>> GetAll();
+        public Result<CategoryDto?> GetById(int id);
+        Result Del(int id);
+        Result Update(int id, UpdateCategotyDto dto);
+        Result Add(CreateCategoryDto dto);
 
     }
 }

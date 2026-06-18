@@ -10,6 +10,7 @@ namespace ECommerce.Application.Interfaces
 {
     public interface IRepositoryCategory
     {
+        public bool IsExist(string name);
         public IEnumerable<Category> GetAll();
         public Category? GetById(int id);
         public void Del(Category category);

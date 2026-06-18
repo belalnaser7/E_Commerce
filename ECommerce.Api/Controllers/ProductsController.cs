@@ -24,18 +24,16 @@ namespace ECommerce.Api.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var products = servicesProduct.GetAll();
-            return Ok(products);
+            var result = servicesProduct.GetAll();
+            return result.ToActionResult();
         }
 
         [Authorize("CanShow")]
         [HttpGet("{id}")]
         public IActionResult GetByid(int id)
         {
-            var product = servicesProduct.GetById(id);
-            if (product is null)
-                return NotFound();
-            return Ok(product);
+            var result = servicesProduct.GetById(id);
+            return result.ToActionResult();
         }
 
         [Authorize("CanManageProducts")]
@@ -44,51 +42,42 @@ namespace ECommerce.Api.Controllers
         {
             string Sellerid = User.GetUserid();
             var result = servicesProduct.Add(dto, Sellerid);
-            if (!result)
-                return BadRequest();
-
-            return Ok();
-
+            return result.ToActionResult();
         }
       
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id,UpdateProductDto dto)
         {
             var product = servicesProduct.GetEntityById(id);
-            if (product is null)
+            if (!product.IsSuccess)
             {
-                return NotFound();
+                return product.ToActionResult();
             }
 
-            var result = await authorizationService.AuthorizeAsync(User, product, new CanDeleteOrUpdateProductRequirement());
+            var result = await authorizationService.AuthorizeAsync(User, product.Data, new CanDeleteOrUpdateProductRequirement());
             if (!result.Succeeded)
             {
                 return Forbid();
             }
             var update=servicesProduct.Update(id, dto);
-            if (!update)
-            {
-                return BadRequest();
-            }
-
-            return Ok();
+            return update.ToActionResult();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             var product = servicesProduct.GetEntityById(id);
-            if (product is null)
+            if (!product.IsSuccess)
             {
-                return NotFound();
+                return product.ToActionResult();
             }
-            var result = await authorizationService.AuthorizeAsync(User, product, new CanDeleteOrUpdateProductRequirement());
+            var result = await authorizationService.AuthorizeAsync(User, product.Data, new CanDeleteOrUpdateProductRequirement());
             if (!result.Succeeded)
             {
                 return Forbid();
             }
-            servicesProduct.Del(product);
-            return Ok();
+            var delete=servicesProduct.Del(id);
+            return delete.ToActionResult();
         }
     }
 }

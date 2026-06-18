@@ -1,21 +1,16 @@
 ﻿using ECommerce.Application.DTOs;
+using ECommerce.Application.Result_pattern;
 using ECommerce.Domain.Domain_Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECommerce.Application.Interfaces
 {
     public interface IServicesProduct
     {
-        IEnumerable<ProductDto> GetAll();
-        ProductDto? GetById(int id);
-        Product? GetEntityById(int id);
-        void Del(Product product1);
-        bool Update(int id, UpdateProductDto dto);
-        bool Add(CreateProductDto dto, string Sellerid);
-
+        Result<IEnumerable<ProductDto>> GetAll();
+        Result<ProductDto?> GetById(int id);
+        Result<Product?> GetEntityById(int id);
+        Result Del(int id);
+        Result Update(int id, UpdateProductDto dto);
+        Result Add(CreateProductDto dto, string Sellerid);
     }
 }

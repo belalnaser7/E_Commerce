@@ -1,5 +1,7 @@
-﻿using ECommerce.Application.DTOs;
+﻿using ECommerce.Api.Extentions;
+using ECommerce.Application.DTOs;
 using ECommerce.Application.Interfaces;
+using ECommerce.Application.Result_pattern;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,16 +18,13 @@ public class CategoryController : ControllerBase
         _categoryService = categoryService;
     }
 
-    [Authorize(Roles = "Customer")]
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public IActionResult Create(CreateCategoryDto dto)
     {
         var result = _categoryService.Add(dto);
 
-        if (!result)
-            return BadRequest("Invalid category data");
-
-        throw new Exception("Test Exception");
+        return result.ToActionResult();
     }
 
     // 🟢 Get All Categories
@@ -34,20 +33,18 @@ public class CategoryController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var categories = _categoryService.GetAll();
-        return Ok(categories);
+        var result = _categoryService.GetAll();
+        return result.ToActionResult();
+     
     }
 
     [Authorize("CanShow")]
     [HttpGet("{id}")]
     public IActionResult GetById(int id)
     {
-        var category = _categoryService.GetById(id);
+        var result = _categoryService.GetById(id);
 
-        if (category is null)
-            return NotFound("Category not found");
-
-        return Ok(category);
+        return result.ToActionResult();
     }
 
     [Authorize(Roles = "Admin")]
@@ -56,10 +53,7 @@ public class CategoryController : ControllerBase
     {
         var result = _categoryService.Update(id, dto);
 
-        if (!result)
-            return NotFound("Category not found");
-
-        return Ok("Category updated successfully");
+        return result.ToActionResult();
     }
 
     [Authorize(Roles = "Admin")]
@@ -68,9 +62,6 @@ public class CategoryController : ControllerBase
     {
         var result = _categoryService.Del(id);
 
-        if (!result)
-            return NotFound("Category not found");
-
-        return Ok("Category deleted successfully");
+        return result.ToActionResult();
     }
 }

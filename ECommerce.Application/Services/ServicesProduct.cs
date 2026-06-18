@@ -1,88 +1,87 @@
 ﻿using ECommerce.Application.DTOs;
 using ECommerce.Application.Interfaces;
-
+using ECommerce.Application.Result_pattern;
 using ECommerce.Domain.Domain_Models;
 using Mapster;
-using Microsoft.AspNetCore.Identity;
 
 namespace ECommerce.Application.Services
 {
-    public class ServicesProduct:IServicesProduct
+    public class ServicesProduct : IServicesProduct
     {
         private readonly IRepositoryProduct product;
-        
+
 
         public ServicesProduct(IRepositoryProduct product)
         {
             this.product = product;
-           
         }
 
-        public bool Add(CreateProductDto dto,string Sellerid)
+        public Result Add(CreateProductDto dto, string Sellerid)
         {
+            if (dto is null)
+                return Result.Fail("Invalid request");
             if (string.IsNullOrWhiteSpace(dto.Name))
-                return false;
-            if(dto.Price<=0)
-                return false;
+                return Result.Fail("The Product Name isn't Valid");
+            if (dto.Price <= 0)
+                return Result.Fail("The Product Price isn't Valid");
             if (dto.StockQuantity <= 0)
-                return false;
+                return Result.Fail("The Product Quantity isn't Valid");
             var pro = dto.Adapt<Product>();
             pro.SellerId = Sellerid;
-            //pro.SellerId = "fadd5e60-e669-4013-821f-fdd5fed55245";
             product.Add(pro);
             product.Save();
-            return true;
+            return Result.Success();
         }
 
-        public void Del(Product product1)
+        public Result Del(int id)
         {
+            var product1 = product.GetById(id);
+            if (product1 is null)
+                return Result.Fail("The Product isn't Exsit");
             product.Del(product1);
-            product.Save(); 
+            product.Save();
+            return Result.Success();
         }
 
-        public IEnumerable<ProductDto> GetAll()
+        public Result<IEnumerable<ProductDto>> GetAll()
         {
             var products = product.GetAll();
+            var dto = products.Adapt<List<ProductDto>>();
 
-            return products.Adapt<List<ProductDto>>();
+            return Result<IEnumerable<ProductDto>>.Success(dto);
         }
 
-        public ProductDto? GetById(int id)
+        public Result<ProductDto?> GetById(int id)
         {
             var product1 = product.GetById(id);
-
             if (product1 is null)
-                return null;
-           
-
-            return product1.Adapt<ProductDto>();
+                return Result<ProductDto?>.Fail("The Product isn't Exsit");
+            var dto = product1.Adapt<ProductDto>();
+            return Result<ProductDto?>.Success(dto);
         }
 
-        public Product? GetEntityById(int id) // helper
+        public Result<Product?> GetEntityById(int id) // helper
         {
             var product1 = product.GetById(id);
-
             if (product1 is null)
-                return null;
-            return product1;
+                return Result<Product?>.Fail("The Product isn't Exsit",ErrorType.NotFound);
+            return Result<Product?>.Success(product1);
         }
 
-        public bool Update(int id, UpdateProductDto dto)
+        public Result Update(int id, UpdateProductDto dto)
         {
             var Found = GetEntityById(id);
-            if (Found is null)
-                return false;
+            if (!Found.IsSuccess)
+                return Found;
             if (string.IsNullOrWhiteSpace(dto.Name))
-                return false;
+                return Result.Fail("The Product Name isn't Valid");
             if (dto.Price <= 0)
-                return false;
+                return Result.Fail("The Product Price isn't Valid");
             if (dto.StockQuantity < 0)
-                return false;
-            dto.Adapt(Found);
+                return Result.Fail("The Product Quantity isn't Valid");
+            dto.Adapt(Found.Data);
             product.Save();
-
-            return true;
-
+            return Result.Success();
         }
     }
 }

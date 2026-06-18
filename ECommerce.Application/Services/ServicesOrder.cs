@@ -1,5 +1,6 @@
 ﻿using ECommerce.Application.DTOs;
 using ECommerce.Application.Interfaces;
+using ECommerce.Application.Result_pattern;
 using ECommerce.Domain.Domain_Models;
 
 namespace ECommerce.Application.Services
@@ -15,34 +16,34 @@ namespace ECommerce.Application.Services
             this.repositoryOrder = repositoryOrder;
             this.repositoryProduct = repositoryProduct;
         }
-        public Cart? GetCartByUserId(string userId) // helper
+        public Result<Cart?> GetCartByUserId(string userId) // helper
         {
             var cart = repositoryCart.GetByUserId(userId);
             if (cart is null)
             {
-                return null;
+                return Result<Cart?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
             }
-            return cart;
+            return Result<Cart?>.Success(cart);
         }
-        public Order? GetEntityById(int orderId) // helper
+        public Result<Order?> GetEntityById(int orderId) // helper
         {
             var order = repositoryOrder.GetById(orderId);
             if (order is null)
             {
-                return null;
+                return Result<Order?>.Fail("The Order isn't Exsit", ErrorType.NotFound);
             }
-            return order;
+            return Result<Order?>.Success(order);
         }
-        public bool Checkout(string userId, CheckOutDto dto)
+        public Result Checkout(string userId, CheckOutDto dto)
         {
             var cart = repositoryCart.GetByUserId(userId);
-            if (cart is null||!cart.Items.Any())
+            if (cart is null || !cart.Items.Any())
             {
-                return false;
+                return Result.Fail("The cart isn't Exsit or Empty", ErrorType.NotFound);
             }
             if (string.IsNullOrWhiteSpace(dto.ShippingAddress))
             {
-                return false;
+                return Result.Fail("The Address isn't Exsit", ErrorType.NotFound);
             }
 
             var products = new Dictionary<int, Product>();
@@ -52,13 +53,13 @@ namespace ECommerce.Application.Services
 
                 if (product is null)
                 {
-                    return false;
+                    return Result.Fail("The Product  isn't Exsit", ErrorType.NotFound);
                 }
                 if (item.Quantity > product.StockQuantity)
                 {
-                    return false;
+                    return Result.Fail("The Quantity is Ivalid");
                 }
-                products.Add(product.Id,product);
+                products.Add(product.Id, product);
 
             }
 
@@ -88,46 +89,51 @@ namespace ECommerce.Application.Services
             repositoryOrder.Add(order);
             cart.Items.Clear();
             repositoryOrder.Save();
-            return true;
+            return Result.Success();
 
         }
 
-        public OrderDto? GetOrderById(int orderId)
+        public Result<OrderDto?> GetOrderById(int orderId)
         {
             var order = repositoryOrder.GetById(orderId);
-
-            return new OrderDto()
+            if (order is null)
             {
-                IdOrder = orderId,
-                ProductCount = order.Items.Count(),
-                TotalPrice = order.TotalPrice,
-                CreatedAt = order.CreatedAt,
-                Items = order.Items.Select(i => new OrderItemDto
-                {
-                    ProductName = i.Product.Name,
-                    UnitPrice = i.UnitPrice,
-                    Quantity = i.Quantity
-                }).ToList()
+                return Result<OrderDto?>.Fail(
+                    "The Order isn't Exsit",
+                    ErrorType.NotFound);
+            }
 
-            };
+            return Result<OrderDto?>.Success(
+                new OrderDto()
+                {
+                    IdOrder = orderId,
+                    ProductCount = order.Items.Count(),
+                    TotalPrice = order.TotalPrice,
+                    CreatedAt = order.CreatedAt,
+                    Items = order.Items.Select(i => new OrderItemDto
+                    {
+                        ProductName = i.Product.Name,
+                        UnitPrice = i.UnitPrice,
+                        Quantity = i.Quantity
+                    }).ToList()
+
+                });
 
         }
 
-        public List<OrderDto> GetOrders(string userId)
+        public Result<List<OrderDto>> GetOrders(string userId)
         {
             var order = repositoryOrder.GetByUserId(userId);
-            if (order is null)
-            {
-                return null;
-            }
 
-            return order.Select(i => new OrderDto()
-            {
-                IdOrder = i.Id,
-                ProductCount = i.Items.Count,
-                TotalPrice = i.TotalPrice,
-                CreatedAt = i.CreatedAt,
-            }).ToList();
+
+            return Result<List<OrderDto>>.Success(
+                order.Select(i => new OrderDto()
+                {
+                    IdOrder = i.Id,
+                    ProductCount = i.Items.Count,
+                    TotalPrice = i.TotalPrice,
+                    CreatedAt = i.CreatedAt,
+                }).ToList());
 
         }
     }

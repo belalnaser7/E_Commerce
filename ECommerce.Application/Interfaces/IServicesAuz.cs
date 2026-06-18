@@ -1,15 +1,11 @@
 ﻿using ECommerce.Application.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ECommerce.Application.Result_pattern;
 
 namespace ECommerce.Application.Interfaces
 {
     public interface IServicesAuz
     {
-        Task<RegisterResultDto> Register(RegisterDto register);
-        Task<LoginResponseDto?> Login(LoginDto login);
+        Task<Result> Register(RegisterDto register);
+        Task<Result<LoginResponseDto?>> Login(LoginDto login);
     }
 }

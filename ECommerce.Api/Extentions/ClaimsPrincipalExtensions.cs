@@ -1,4 +1,6 @@
-﻿using System.Security.Claims;
+﻿using ECommerce.Application.Result_pattern;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ECommerce.Api.Extentions
 {
@@ -16,6 +18,37 @@ namespace ECommerce.Api.Extentions
         public static string? GetUserName(this ClaimsPrincipal user)
         {
             return user.FindFirst(ClaimTypes.Name)?.Value;
+        }
+
+        
+    }
+
+    public static class ResultPattern
+    {
+        public static IActionResult ToActionResult<T>(this Result<T> result)
+        {
+            return result.ErrorType switch
+            {
+                ErrorType.NotFound => new NotFoundObjectResult(result.ErrorMessage),
+                ErrorType.Conflict => new ConflictObjectResult(result.ErrorMessage),
+                ErrorType.BadRequest => new BadRequestObjectResult(result.ErrorMessage),
+                ErrorType.Unauthorized => new UnauthorizedObjectResult(result.ErrorMessage),
+
+                _ => new OkObjectResult(result.Data)
+            };
+        }
+
+        public static IActionResult ToActionResult(this Result result)
+        {
+            return result.ErrorType switch
+            {
+                ErrorType.NotFound => new NotFoundObjectResult(result.ErrorMessage),
+                ErrorType.Conflict => new ConflictObjectResult(result.ErrorMessage),
+                ErrorType.BadRequest => new BadRequestObjectResult(result.ErrorMessage),
+                ErrorType.Unauthorized => new UnauthorizedObjectResult(result.ErrorMessage),
+
+                _ => new OkResult()
+            };
         }
     }
 }

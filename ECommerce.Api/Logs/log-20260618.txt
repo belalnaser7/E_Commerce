@@ -1,0 +1,64 @@
+[2026-06-18 00:15:55] [INF] UserId= Path= Message=Executed DbCommand ("369"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-18 00:15:56] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-18 00:15:56] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-18 00:15:56] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-18 00:15:56] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-18 00:15:56] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-18 00:15:56] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-18 00:15:56] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-18 00:15:58] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-18 00:15:59] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 590.8629ms
+[2026-06-18 00:15:59] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-18 00:15:59] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-18 00:15:59] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 5.423ms
+[2026-06-18 00:15:59] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 105.8211ms
+[2026-06-18 00:15:59] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-18 00:15:59] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 39.0825ms
+[2026-06-18 00:16:42] [INF] UserId= Path=/api/Category Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Category""" - "application/json" 49
+[2026-06-18 00:16:42] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.Create (ECommerce.Api)"'
+[2026-06-18 00:16:42] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Route matched with "{action = \"Create\", controller = \"Category\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Create(ECommerce.Application.DTOs.CreateCategoryDto)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-18 00:16:43] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executed DbCommand ("578"ms) [Parameters=["@__name_0='?' (Size = 100)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Categories] AS [c]
+        WHERE [c].[Name] = @__name_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END"
+[2026-06-18 00:16:43] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-18 00:16:43] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executed action "ECommerce.Api.Controllers.CategoryController.Create (ECommerce.Api)" in 737.5041ms
+[2026-06-18 00:16:43] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.Create (ECommerce.Api)"'
+[2026-06-18 00:16:43] [INF] UserId= Path=/api/Category Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Category""" - 400 null "text/plain; charset=utf-8" 926.1606ms
+[2026-06-18 00:17:00] [INF] UserId= Path=/api/Category Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Category""" - "application/json" 43
+[2026-06-18 00:17:00] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.Create (ECommerce.Api)"'
+[2026-06-18 00:17:00] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Route matched with "{action = \"Create\", controller = \"Category\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult Create(ECommerce.Application.DTOs.CreateCategoryDto)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-18 00:17:00] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-18 00:17:00] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executed action "ECommerce.Api.Controllers.CategoryController.Create (ECommerce.Api)" in 2.5039ms
+[2026-06-18 00:17:00] [INF] UserId=c1dfa75d-4f64-48bf-8b35-e549bc165ad2 Path=/api/Category Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.Create (ECommerce.Api)"'
+[2026-06-18 00:17:00] [INF] UserId= Path=/api/Category Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Category""" - 400 null "text/plain; charset=utf-8" 8.0323ms
+[2026-06-18 22:46] [INF] UserId= Path= Message=Executed DbCommand ("1,434"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-18 22:46] [INF] UserId= Path= Message=Executed DbCommand ("10"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-18 22:46] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-18 22:46] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-18 22:46] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-18 22:46] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-18 22:46] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-18 22:46] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"

@@ -1,4 +1,5 @@
 ﻿using ECommerce.Application.DTOs;
+using ECommerce.Application.Result_pattern;
 using ECommerce.Domain.Domain_Models;
 using System;
 using System.Collections.Generic;
@@ -10,19 +11,19 @@ namespace ECommerce.Application.Interfaces
 {
     public interface IServicesCart
     {
-        public Cart? GetByUserId(string userId);
-        CartDto? GetCart(string userId);
+        Result<Cart?> GetByUserId(string userId);
+        Result<CartDto?> GetCart(string userId);
 
-        bool AddToCart(string userId, AddToCartDto dto);
+        Result AddToCart(string userId, AddToCartDto dto);
 
-        bool RemoveItem(string userId, int cartitemid);
+        Result RemoveItem(string userId, int cartitemid);
 
-        bool UpdateQuantity(string userId, UpdateCartItemDto dto);
+        Result UpdateQuantity(string userId, UpdateCartItemDto dto);
 
-        bool ClearCart(string userId);
+        Result ClearCart(string userId);
 
 
 
-        
+
     }
 }

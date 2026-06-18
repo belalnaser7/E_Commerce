@@ -135,10 +135,9 @@ builder.Services.AddAuthorization(policy =>
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .Enrich.FromLogContext()
-    .WriteTo.Console()
-    .WriteTo.File("Logs/log.txt",
+    .WriteTo.File("Logs/log-.txt",
     rollingInterval: RollingInterval.Day,
-    outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss}] [{Level:u3}] UserId={UserId} Path={RequestPath} Message={Message}{NewLine}")
+    outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm}] [{Level:u3}] UserId={UserId} Path={RequestPath} Message={Message}{NewLine}")
     .CreateLogger();
 builder.Host.UseSerilog();
 var app = builder.Build();

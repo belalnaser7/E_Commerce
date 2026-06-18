@@ -24,25 +24,21 @@ namespace ECommerce.Api.Controllers
         public async Task<IActionResult> GetCart(string userId)
         {
             var cart = servicesCart.GetByUserId(userId);
-
-            if (cart is null)
+            if (!cart.IsSuccess)
             {
-                return NotFound();
+              return cart.ToActionResult() ;
             }
-
             var result = await authorizationService.AuthorizeAsync(
                 User,
-                cart,
+                cart.Data,
                 new CanViewCartRequirement());
 
             if (!result.Succeeded)
             {
                 return Forbid();
             }
-
-            var dto = servicesCart.GetCart(userId);
-
-            return Ok(dto);
+            var result1 = servicesCart.GetCart(userId);
+            return result1.ToActionResult();
         }
         //for Customer 
         [Authorize(Roles = "Customer")]
@@ -52,61 +48,42 @@ namespace ECommerce.Api.Controllers
             var userid = User.GetUserid();
 
             var cartitems = servicesCart.GetCart(userid);
-            if (cartitems is null)
-            {
-                return NotFound();
-            }
-
-            return Ok(cartitems);
+            return cartitems.ToActionResult();
         }
         //For Admins 
         [HttpDelete("{cartitemid}/{userid}")]
         public async Task<IActionResult> DeleteCart(int cartitemid, string userid)
         {
             var cart = servicesCart.GetByUserId(userid);
-            if (cart is null)
+            if (!cart.IsSuccess)
             {
-                return NotFound();
+                return cart.ToActionResult();
             }
-            var result = await authorizationService.AuthorizeAsync(User, cart, new CanViewCartRequirement());
+            var result = await authorizationService.AuthorizeAsync(User, cart.Data, new CanViewCartRequirement());
             if (!result.Succeeded)
             {
                 return Forbid();
             }
-            var DeleteCart = servicesCart.RemoveItem(userid, cartitemid);
-            if (!DeleteCart)
-            {
-                return NotFound();
-            }
-            return Ok();
+            var result1 = servicesCart.RemoveItem(userid, cartitemid);
+            return result1.ToActionResult();
         }
         //for Customer 
         [Authorize(Roles = "Customer")]
         [HttpDelete("{cartitemid}")]
         public async Task<IActionResult> DeleteCart(int cartitemid)
-        {
+        {   
             var userid = User.GetUserid();
 
-            var DeleteCart = servicesCart.RemoveItem(userid, cartitemid);
-            if (!DeleteCart)
-            {
-                return NotFound();
-            }
-            return Ok();
+            var result = servicesCart.RemoveItem(userid, cartitemid);
+            return result.ToActionResult();
         }
 
         [Authorize(Roles = "Admin")]
         [HttpDelete("clearCart/{userid}")]
         public async Task<IActionResult> ClearCart(string userid)
         {
-
             var result = servicesCart.ClearCart(userid);
-            if (!result)
-            {
-                return NotFound();
-            }
-
-            return Ok();
+            return result.ToActionResult();
         }
 
         [Authorize]
@@ -115,12 +92,7 @@ namespace ECommerce.Api.Controllers
         {
             var userid = User.GetUserid();
             var result = servicesCart.ClearCart(userid);
-            if (!result)
-            {
-                return NotFound();
-            }
-
-            return Ok();
+            return result.ToActionResult();
         }
 
         [Authorize(Roles ="Customer")]
@@ -129,25 +101,16 @@ namespace ECommerce.Api.Controllers
         {
             var userid = User.GetUserid();
             
-            var addtocart = servicesCart.AddToCart(userid, dto);
-            if (!addtocart)
-            {
-                return BadRequest();
-            }
-            return Ok();
+            var result = servicesCart.AddToCart(userid, dto);
+            return result.ToActionResult();
         }
         [Authorize(Roles = "Customer")]
         [HttpPut]
         public async Task<IActionResult> Update(UpdateCartItemDto dto)
         {
             var userid = User.GetUserid();
-            
-            var addtocart = servicesCart.UpdateQuantity(userid, dto);
-            if (!addtocart)
-            {
-                return BadRequest();
-            }
-            return Ok();
+            var result = servicesCart.UpdateQuantity(userid, dto);
+            return result.ToActionResult(); ;
         }
     }
 }

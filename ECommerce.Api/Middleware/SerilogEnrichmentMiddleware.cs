@@ -20,7 +20,7 @@ namespace ECommerce.Api.Middleware
                ? context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value
                : "Anonymous";
 
-            using (LogContext.PushProperty("UserId", userId))
+            using (LogContext.PushProperty("UserId", userId))// ال using scope عشان كل ما لوج تخلص البيانات تتمسح وتفضي عشان ميحصلش تعارض
             using (LogContext.PushProperty("Path", path))
             using (LogContext.PushProperty("Method", method))
             {
