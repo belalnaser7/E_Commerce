@@ -2,7 +2,6 @@
 using ECommerce.Application.Interfaces;
 using ECommerce.Application.Result_pattern;
 using ECommerce.Domain.Domain_Models;
-using Mapster;
 
 namespace ECommerce.Application.Services
 {
@@ -16,9 +15,9 @@ namespace ECommerce.Application.Services
             this.repositoryCart = repositoryCart;
             this.repositoryProduct = repositoryProduct;
         }
-        public Result<Cart?> GetByUserId(string userId) // helper
+        public async Task<Result<Cart?>> GetByUserIdAsync(string userId) // helper
         {
-            var cart = repositoryCart.GetByUserId(userId);
+            var cart = await repositoryCart.GetByUserIdAsync(userId);
             if (cart is null)
             {
                 return Result<Cart?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
@@ -26,17 +25,17 @@ namespace ECommerce.Application.Services
             return Result<Cart?>.Success(cart);
         }
 
-        public Result AddToCart(string userId, AddToCartDto dto)
+        public async Task<Result> AddToCartAsync(string userId, AddToCartDto dto)
         {
             if (dto.Quantity <= 0)
                 return Result.Fail("The Product Quantity Invalid");
 
-            var product = repositoryProduct.GetById(dto.ProductId);
+            var product = await repositoryProduct.GetByIdAsync(dto.ProductId);
             if (product is null)
             {
                 return Result.Fail("The Product isn't Exsit");
             }
-            var cartResult = GetByUserId(userId);
+            var cartResult = await GetByUserIdAsync(userId);
             Cart cart;
 
             if (!cartResult.IsSuccess)
@@ -47,30 +46,34 @@ namespace ECommerce.Application.Services
                     UserId = userId
                 };
 
-                repositoryCart.Add(cart);
+               await repositoryCart.AddAsync(cart);
             }
-            var existingItem = cartResult.Data.Items.FirstOrDefault(i => i.ProductId == product.Id);
+            else
+            {
+                cart = cartResult.Data;
+            }
+            var existingItem = cart.Items.FirstOrDefault(i => i.ProductId == product.Id);
             if (existingItem is not null)
             {
                 existingItem.Quantity += dto.Quantity;
             }
             else
             {
-                cartResult.Data.Items.Add(new CartItem
+                cart.Items.Add(new CartItem
                 {
                     ProductId = dto.ProductId,
                     Quantity = dto.Quantity,
                     UnitPrice = product.Price,
                 });
             }
-            repositoryCart.Save();
+            await repositoryCart.SaveAsync();
 
             return Result.Success();
         }
 
-        public Result ClearCart(string userId)
+        public async Task<Result> ClearCartAsync(string userId)
         {
-            var cart = GetByUserId(userId);
+            var cart =await GetByUserIdAsync(userId);
             if (!cart.IsSuccess)
             {
                 return cart;
@@ -78,13 +81,13 @@ namespace ECommerce.Application.Services
 
             cart.Data.Items.Clear();
 
-            repositoryCart.Save();
+            await repositoryCart.SaveAsync();
             return Result.Success();
         }
 
-        public Result<CartDto?> GetCart(string userId)
+        public async Task<Result<CartDto?>> GetCartAsync(string userId)
         {
-            var cart = GetByUserId(userId);
+            var cart =await GetByUserIdAsync(userId);
             if (!cart.IsSuccess)
             {
                 return Result<CartDto?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
@@ -118,9 +121,9 @@ namespace ECommerce.Application.Services
 
         }
 
-        public Result RemoveItem(string userId, int cartitemid)
+        public async Task<Result> RemoveItemAsync(string userId, int cartitemid)
         {
-            var cart = GetByUserId(userId);
+            var cart =await GetByUserIdAsync(userId);
             if (!cart.IsSuccess)
             {
                 return cart;
@@ -133,16 +136,16 @@ namespace ECommerce.Application.Services
             }
 
             repositoryCart.Remove(existingItem);
-            repositoryCart.Save();
+            await repositoryCart.SaveAsync();
             return Result.Success();
 
         }
 
-        public Result UpdateQuantity(string userId, UpdateCartItemDto dto)
+        public async Task<Result> UpdateQuantityAsync(string userId, UpdateCartItemDto dto)
         {
             if (dto.Quantity <= 0)
                 return Result.Fail("The Product Quantity Invalid");
-            var cart = GetByUserId(userId);
+            var cart =await GetByUserIdAsync(userId);
             if (!cart.IsSuccess)
             {
                 return cart;
@@ -154,7 +157,7 @@ namespace ECommerce.Application.Services
                 return Result.Fail("The Cart Item isn't Exsit");
             }
             existingItem.Quantity = dto.Quantity;
-            repositoryCart.Save();
+            await repositoryCart.SaveAsync();
             return Result.Success();
 
         }

@@ -1,5 +1,4 @@
-﻿using ECommerce.Application.DTOs;
-using ECommerce.Application.Interfaces;
+﻿using ECommerce.Application.Interfaces;
 using ECommerce.Domain.Domain_Models;
 using ECommerce.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -15,32 +14,29 @@ namespace ECommerce.Infrastructure.Repositories
             this.context = context;
         }
 
-        public Cart? GetByUserId(string userId)
+        public Task<Cart?> GetByUserIdAsync(string userId)
         {
             return context.Carts
                 .Include(c => c.Items)
                     .ThenInclude(i => i.Product)
-                .FirstOrDefault(c => c.UserId == userId);
+                .FirstOrDefaultAsync(c => c.UserId == userId);
         }
 
-        public Cart? GetById(int cartId)
+        public Task<Cart?> GetByIdAsync(int cartId)
         {
             return context.Carts
                 .Include(c => c.Items)
                     .ThenInclude(i => i.Product)
-                .FirstOrDefault(c => c.Id == cartId);
+                .FirstOrDefaultAsync(c => c.Id == cartId);
         }
 
-        public void Add(Cart cart)
+        public async Task AddAsync(Cart cart)
         {
-            context.Carts.Add(cart);
+            await context.Carts.AddAsync(cart);
         }
 
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
+        public Task SaveAsync() =>
+            context.SaveChangesAsync();
         public void Remove(CartItem cart)
         {
             context.Remove(cart);

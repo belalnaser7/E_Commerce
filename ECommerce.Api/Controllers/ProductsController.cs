@@ -22,33 +22,33 @@ namespace ECommerce.Api.Controllers
         }
         [Authorize("CanShow")]
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var result = servicesProduct.GetAll();
+            var result = await servicesProduct.GetAllAsync();
             return result.ToActionResult();
         }
 
         [Authorize("CanShow")]
         [HttpGet("{id}")]
-        public IActionResult GetByid(int id)
+        public async Task<IActionResult> GetByidAsync(int id)
         {
-            var result = servicesProduct.GetById(id);
+            var result =await servicesProduct.GetByIdAsync(id);
             return result.ToActionResult();
         }
 
         [Authorize("CanManageProducts")]
         [HttpPost]
-        public IActionResult Add(CreateProductDto dto)
+        public async Task<IActionResult> Add(CreateProductDto dto)
         {
             string Sellerid = User.GetUserid();
-            var result = servicesProduct.Add(dto, Sellerid);
+            var result =await servicesProduct.AddAsync(dto, Sellerid);
             return result.ToActionResult();
         }
       
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id,UpdateProductDto dto)
         {
-            var product = servicesProduct.GetEntityById(id);
+            var product =await servicesProduct.GetEntityByIdAsync(id);
             if (!product.IsSuccess)
             {
                 return product.ToActionResult();
@@ -59,14 +59,14 @@ namespace ECommerce.Api.Controllers
             {
                 return Forbid();
             }
-            var update=servicesProduct.Update(id, dto);
+            var update=await servicesProduct.UpdateAsync(id, dto);
             return update.ToActionResult();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var product = servicesProduct.GetEntityById(id);
+            var product =await servicesProduct.GetEntityByIdAsync(id);
             if (!product.IsSuccess)
             {
                 return product.ToActionResult();
@@ -76,7 +76,7 @@ namespace ECommerce.Api.Controllers
             {
                 return Forbid();
             }
-            var delete=servicesProduct.Del(id);
+            var delete=await servicesProduct.DelAsync(id);
             return delete.ToActionResult();
         }
     }

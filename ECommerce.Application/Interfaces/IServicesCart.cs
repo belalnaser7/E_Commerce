@@ -11,16 +11,16 @@ namespace ECommerce.Application.Interfaces
 {
     public interface IServicesCart
     {
-        Result<Cart?> GetByUserId(string userId);
-        Result<CartDto?> GetCart(string userId);
+        Task<Result<Cart?>> GetByUserIdAsync(string userId);
+        Task<Result> AddToCartAsync(string userId, AddToCartDto dto);
 
-        Result AddToCart(string userId, AddToCartDto dto);
+        Task<Result> ClearCartAsync(string userId);
 
-        Result RemoveItem(string userId, int cartitemid);
+        Task<Result<CartDto?>> GetCartAsync(string userId);
 
-        Result UpdateQuantity(string userId, UpdateCartItemDto dto);
+        Task<Result> RemoveItemAsync(string userId, int cartitemid);
 
-        Result ClearCart(string userId);
+        Task<Result> UpdateQuantityAsync(string userId, UpdateCartItemDto dto);
 
 
 

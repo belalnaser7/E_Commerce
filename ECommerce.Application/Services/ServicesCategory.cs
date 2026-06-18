@@ -6,7 +6,7 @@ using Mapster;
 
 namespace ECommerce.Application.Services
 {
-    public class ServicesCategory:IServicesCategory
+    public class ServicesCategory : IServicesCategory
     {
         private readonly IRepositoryCategory category;
 
@@ -16,45 +16,45 @@ namespace ECommerce.Application.Services
         }
 
 
-        public Result Add(CreateCategoryDto dto)
+        public async Task<Result> AddAsync(CreateCategoryDto dto)
         {
             if (string.IsNullOrWhiteSpace(dto.Name))
             {
                 return Result.Fail("The Name is Empty");
             }
-           
-            if (category.IsExist(dto.Name))
+
+            if (await category.IsExistAsync(dto.Name))
             {
                 return Result.Fail("The Name is Already Exsit");
             }
 
             var categoryEntity = dto.Adapt<Category>();
-            category.Add(categoryEntity);
-            category.Save();
+            await category.AddAsync(categoryEntity);
+            await category.SaveAsync();
             return Result.Success();
         }
-        public Result Del(int id)
+        public async Task<Result> DelAsync(int id)
         {
-            var category1 = category.GetById(id);
+            var category1 = await category.GetByIdAsync(id);
             if (category1 is null)
                 return Result.Fail("This Category isn't Exsit");
             category.Del(category1);
-            category.Save();
+            await category.SaveAsync();
             return Result.Success();
         }
 
-        public Result<IEnumerable<CategoryDto>> GetAll()
+        public async Task<Result<IEnumerable<CategoryDto>>> GetAllAsync()
         {
-            var Categories = category.GetAll();
-            
-           var dto= Categories.Adapt<List<CategoryDto>>();
+            var Categories = await category.GetAllAsync();
 
-            return Result<IEnumerable<CategoryDto>?>.Success(dto);
+            var dto = Categories.Adapt<List<CategoryDto>>();
+
+            return Result<IEnumerable<CategoryDto>>.Success(dto);
         }
 
-        public Result<CategoryDto?> GetById(int id)
+        public async Task<Result<CategoryDto?>> GetByIdAsync(int id)
         {
-            var categoryEntity = category.GetById(id);
+            var categoryEntity = await category.GetByIdAsync(id);
             if (categoryEntity is null)
             {
                 return Result<CategoryDto?>.Fail("This Category isn't Exsit");
@@ -65,13 +65,13 @@ namespace ECommerce.Application.Services
             return Result<CategoryDto?>.Success(dto);
         }
 
-        public Result Update(int id, UpdateCategotyDto dto)
+        public async Task<Result> UpdateAsync(int id, UpdateCategotyDto dto)
         {
-            var category2 = category.GetById(id);
+            var category2 = await category.GetByIdAsync(id);
             if (category2 is null)
                 return Result.Fail("This Category isn't Exsit");
             dto.Adapt(category2);
-            category.Save();
+            await category.SaveAsync();
             return Result.Success();
 
         }

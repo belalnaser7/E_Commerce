@@ -2,6 +2,7 @@
 using ECommerce.Application.Interfaces;
 using ECommerce.Domain.Domain_Models;
 using ECommerce.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Infrastructure.Repositories
 {
@@ -14,46 +15,30 @@ namespace ECommerce.Infrastructure.Repositories
             this.context = context;
         }
 
-        public void Add(Product dto)
+        public async Task AddAsync(Product dto)
         {
-            context.Add(dto);
+             await context.AddAsync(dto);
         }
 
         public void Del(Product product)
         {
-
             context.Remove(product);
-
         }
 
-        public IEnumerable<Product> GetAll()
+        public  async Task<IEnumerable<Product>> GetAllAsync()=>
+        await context.Products.ToListAsync();
+        
+
+        public Task<Product?> GetByIdAsync(int id)
         {
-            return context.Products.ToList();
+            return context.Products.FirstOrDefaultAsync(i => i.Id == id);
         }
 
-        public Product GetById(int id)
+        public async Task SaveAsync()
         {
-            return context.Products.FirstOrDefault(i => i.Id == id);
+           await context.SaveChangesAsync();
         }
 
-        public void Save()
-        {
-            context.SaveChanges();
-        }
-
-        //public bool Update(int id , Product product)
-        //{
-        //    var Found = GetById(id);
-        //    if (Found is null)
-        //    {
-        //        return false;
-        //    }
-        //    Found.Name = product.Name;
-        //    Found.Price = product.Price;
-        //    Found.Description = product.Description;
-        //    Found.StockQuantity = product.StockQuantity;
-
-        //    return true;
-        //}
+    
     }
 }

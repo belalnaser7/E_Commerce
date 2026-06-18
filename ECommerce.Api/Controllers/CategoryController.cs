@@ -20,9 +20,9 @@ public class CategoryController : ControllerBase
 
     [Authorize(Roles = "Admin")]
     [HttpPost]
-    public IActionResult Create(CreateCategoryDto dto)
+    public async Task<IActionResult> Create(CreateCategoryDto dto)
     {
-        var result = _categoryService.Add(dto);
+        var result = await _categoryService.AddAsync(dto);
 
         return result.ToActionResult();
     }
@@ -31,36 +31,35 @@ public class CategoryController : ControllerBase
    
     [Authorize("CanShow")]
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        var result = _categoryService.GetAll();
+        var result = await _categoryService.GetAllAsync();
         return result.ToActionResult();
-     
     }
 
     [Authorize("CanShow")]
     [HttpGet("{id}")]
-    public IActionResult GetById(int id)
+    public async Task<IActionResult> GetById(int id)
     {
-        var result = _categoryService.GetById(id);
+        var result = await _categoryService.GetByIdAsync(id);
 
         return result.ToActionResult();
     }
 
     [Authorize(Roles = "Admin")]
     [HttpPut("{id}")]
-    public IActionResult Update(int id, UpdateCategotyDto dto)
+    public async Task<IActionResult> Update(int id, UpdateCategotyDto dto)
     {
-        var result = _categoryService.Update(id, dto);
+        var result =await _categoryService.UpdateAsync(id, dto);
 
         return result.ToActionResult();
     }
 
     [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var result = _categoryService.Del(id);
+        var result =await _categoryService.DelAsync(id);
 
         return result.ToActionResult();
     }

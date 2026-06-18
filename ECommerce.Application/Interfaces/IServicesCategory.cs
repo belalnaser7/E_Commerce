@@ -11,11 +11,11 @@ namespace ECommerce.Application.Interfaces
 {
     public interface IServicesCategory
     {
-        public Result<IEnumerable<CategoryDto>> GetAll();
-        public Result<CategoryDto?> GetById(int id);
-        Result Del(int id);
-        Result Update(int id, UpdateCategotyDto dto);
-        Result Add(CreateCategoryDto dto);
+        Task<Result> AddAsync(CreateCategoryDto dto);
+        Task<Result> DelAsync(int id);
+        Task<Result<IEnumerable<CategoryDto>>> GetAllAsync();
+        Task<Result<CategoryDto?>> GetByIdAsync(int id);
+        Task<Result> UpdateAsync(int id, UpdateCategotyDto dto);
 
     }
 }

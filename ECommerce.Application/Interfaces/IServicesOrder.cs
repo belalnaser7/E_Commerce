@@ -11,12 +11,12 @@ namespace ECommerce.Application.Interfaces
 {
     public interface IServicesOrder
     {
-         Result<Cart?> GetCartByUserId(string userId);
-        Result<Order?> GetEntityById(int orderId);
-         Result Checkout(string userId, CheckOutDto dto);
+        Task<Result<Cart?>> GetCartByUserIdAsync(string userId);
+        Task<Result<Order?>> GetEntityByIdAsync(int orderId);
+        Task<Result> CheckoutAsync(string userId, CheckOutDto dto);
 
-         Result<OrderDto?> GetOrderById(int orderId);
+        Task<Result<OrderDto?>> GetOrderByIdAsync(int orderId);
 
-        Result<List<OrderDto>> GetOrders(string userId);
+        Task<Result<List<OrderDto>>> GetOrdersAsync(string userId);
     }
 }

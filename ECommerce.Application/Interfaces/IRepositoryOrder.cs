@@ -9,10 +9,10 @@ namespace ECommerce.Application.Interfaces
 {
     public interface IRepositoryOrder
     {
-        void Add(Order order);
-        List<Order> GetByUserId(string userId);
-        Order? GetById(int orderid);
-        void Save();
+        Task AddAsync(Order order);
+        Task<Order?> GetByIdAsync(int orderid);
+        Task<List<Order>?> GetByUserIdAsync(string userId);
+        Task SaveAsync();
 
     }
 }

@@ -2,6 +2,7 @@
 using ECommerce.Application.Interfaces;
 using ECommerce.Domain.Domain_Models;
 using ECommerce.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Infrastructure.Repositories
 {
@@ -14,43 +15,29 @@ namespace ECommerce.Infrastructure.Repositories
             context = Context;
         }
 
-        public IEnumerable<Category> GetAll() =>
-                  context.Categories.ToList();
+        public async Task<IEnumerable<Category>> GetAllAsync() =>
+                await context.Categories.ToListAsync();
+        public async Task<Category?> GetByIdAsync(int id) =>
+          await context.Categories.FirstOrDefaultAsync(d => d.Id == id);
+        public async Task<bool> IsExistAsync(string name) =>
 
-        public Category? GetById(int id) =>
-           context.Categories.FirstOrDefault(d => d.Id == id);
-        public bool IsExist(string name) 
+            await context.Categories.AnyAsync(k => k.Name == name);
+
+        public async Task SaveAsync()
         {
-            var Exist=context.Categories.Any(k => k.Name == name);
-           
-            return Exist;
+            await context.SaveChangesAsync();
         }
-        
 
+        public async Task AddAsync(Category dto) =>
+           await context.AddAsync(dto);
 
-        public void Save() =>
-            context.SaveChanges();
-
-        public void Add(Category dto)=>
-            context.Add(dto);
-        
 
         public void Del(Category category)
         {
-            
-                context.Remove(category);
-          
+
+            context.Remove(category);
+
         }
 
-       
-        //public bool Update(int id ,Category category)
-        //{
-        //    var Found = GetById(id);
-        //    if (Found is null)
-        //        return false;
-        //    Found.Name = category.Name;
-        //    Found.Description = category.Description;
-        //    return true;
-        //}
     }
 }

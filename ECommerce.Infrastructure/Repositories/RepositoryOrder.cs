@@ -14,28 +14,28 @@ namespace ECommerce.Infrastructure.Repositories
             this.context = context;
         }
 
-        public void Add(Order order)
+        public async Task AddAsync(Order order)
         {
-            context.Add(order);
+           await context.AddAsync(order);
         }
 
-        public Order? GetById(int orderid)
+        public async Task<Order?> GetByIdAsync(int orderid)
         {
-            return context.Orders.Include(o => o.Items).ThenInclude(p=>p.Product).FirstOrDefault(i => i.Id == orderid);
+            return await context.Orders.Include(o => o.Items).ThenInclude(p=>p.Product).FirstOrDefaultAsync(i => i.Id == orderid);
         }
 
-        public List<Order>? GetByUserId(string userId)
+        public async Task<List<Order>?> GetByUserIdAsync(string userId)
         {
-            return context.Orders
+            return await context.Orders
                 .Include(o => o.Items)
                 .ThenInclude(i => i.Product)
                 .Where(o => o.UserId == userId)
-                .ToList();
+                .ToListAsync();
         }
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            context.SaveChanges();
+           await context.SaveChangesAsync();
         }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using ECommerce.Api.Extentions;
 using ECommerce.Application.DTOs;
 using ECommerce.Application.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace ECommerce.Api.Controllers
 {
@@ -18,7 +15,6 @@ namespace ECommerce.Api.Controllers
         {
             this.servicesRegister = servicesRegister;
         }
-
         [HttpPost("Register")]
         public async Task<IActionResult> register(RegisterDto dto)
         {
@@ -38,9 +34,6 @@ namespace ECommerce.Api.Controllers
             var result = await servicesRegister.Login(login);
 
             return result.ToActionResult();
-
         }
-
-
     }
 }

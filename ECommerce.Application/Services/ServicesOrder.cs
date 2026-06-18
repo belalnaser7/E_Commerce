@@ -16,28 +16,28 @@ namespace ECommerce.Application.Services
             this.repositoryOrder = repositoryOrder;
             this.repositoryProduct = repositoryProduct;
         }
-        public Result<Cart?> GetCartByUserId(string userId) // helper
+        public async Task<Result<Cart?>> GetCartByUserIdAsync(string userId) // helper
         {
-            var cart = repositoryCart.GetByUserId(userId);
+            var cart =await repositoryCart.GetByUserIdAsync(userId);
             if (cart is null)
             {
                 return Result<Cart?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
             }
             return Result<Cart?>.Success(cart);
         }
-        public Result<Order?> GetEntityById(int orderId) // helper
+        public async Task<Result<Order?>> GetEntityByIdAsync(int orderId) // helper
         {
-            var order = repositoryOrder.GetById(orderId);
+            var order =await repositoryOrder.GetByIdAsync(orderId);
             if (order is null)
             {
                 return Result<Order?>.Fail("The Order isn't Exsit", ErrorType.NotFound);
             }
             return Result<Order?>.Success(order);
         }
-        public Result Checkout(string userId, CheckOutDto dto)
+        public async Task<Result> CheckoutAsync(string userId, CheckOutDto dto)
         {
-            var cart = repositoryCart.GetByUserId(userId);
-            if (cart is null || !cart.Items.Any())
+            var cart =await repositoryCart.GetByUserIdAsync(userId);
+            if (cart is null||cart.Items is null || !cart.Items.Any())
             {
                 return Result.Fail("The cart isn't Exsit or Empty", ErrorType.NotFound);
             }
@@ -45,11 +45,10 @@ namespace ECommerce.Application.Services
             {
                 return Result.Fail("The Address isn't Exsit", ErrorType.NotFound);
             }
-
             var products = new Dictionary<int, Product>();
             foreach (var item in cart.Items)
             {
-                var product = repositoryProduct.GetById(item.ProductId);
+                var product =await repositoryProduct.GetByIdAsync(item.ProductId);
 
                 if (product is null)
                 {
@@ -60,9 +59,7 @@ namespace ECommerce.Application.Services
                     return Result.Fail("The Quantity is Ivalid");
                 }
                 products.Add(product.Id, product);
-
             }
-
             var order = new Order()
             {
                 UserId = userId,
@@ -78,24 +75,20 @@ namespace ECommerce.Application.Services
                     });
                 }).ToList()
             };
-
             order.TotalPrice = order.Items.Sum(i => i.UnitPrice * i.Quantity);
-
             foreach (var item in cart.Items)
             {
                 var product = products[item.ProductId];
                 product.StockQuantity -= item.Quantity;
             }
-            repositoryOrder.Add(order);
+          await repositoryOrder.AddAsync(order);
             cart.Items.Clear();
-            repositoryOrder.Save();
+           await repositoryOrder.SaveAsync();
             return Result.Success();
-
         }
-
-        public Result<OrderDto?> GetOrderById(int orderId)
+        public async Task<Result<OrderDto?>> GetOrderByIdAsync(int orderId)
         {
-            var order = repositoryOrder.GetById(orderId);
+            var order =await repositoryOrder.GetByIdAsync(orderId);
             if (order is null)
             {
                 return Result<OrderDto?>.Fail(
@@ -121,9 +114,9 @@ namespace ECommerce.Application.Services
 
         }
 
-        public Result<List<OrderDto>> GetOrders(string userId)
+        public async Task<Result<List<OrderDto>>> GetOrdersAsync(string userId)
         {
-            var order = repositoryOrder.GetByUserId(userId);
+            var order =await repositoryOrder.GetByUserIdAsync(userId);
 
 
             return Result<List<OrderDto>>.Success(

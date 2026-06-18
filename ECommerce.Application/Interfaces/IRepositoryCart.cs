@@ -5,13 +5,13 @@ namespace ECommerce.Application.Interfaces
     public interface IRepositoryCart
     {
 
-        Cart? GetByUserId(string userId);
+        Task<Cart?> GetByUserIdAsync(string userId);
 
-        Cart? GetById(int cartId);
+        Task<Cart?> GetByIdAsync(int cartId);
 
-        void Add(Cart cart);
+        Task AddAsync(Cart cart);
         void Remove(CartItem cart);
 
-        void Save();
+        Task SaveAsync();
     }
 }

@@ -10,13 +10,12 @@ namespace ECommerce.Application.Interfaces
 {
     public interface IRepositoryCategory
     {
-        public bool IsExist(string name);
-        public IEnumerable<Category> GetAll();
-        public Category? GetById(int id);
-        public void Del(Category category);
-       // public bool Update(int id,Category category);
-        public void Add(Category dto);
-        public void Save();
+        Task<IEnumerable<Category>> GetAllAsync();
+        Task<Category?> GetByIdAsync(int id);
+        Task<bool> IsExistAsync(string name);
+        Task SaveAsync();
+        Task AddAsync(Category dto);
+        void Del(Category category);
 
     }
 }

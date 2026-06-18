@@ -10,12 +10,12 @@ namespace ECommerce.Application.Interfaces
 {
     public interface IRepositoryProduct
     {
-        public IEnumerable<Product> GetAll();
-        public Product GetById(int id);
-       
-        public void Del(Product product);
+        Task AddAsync(Product dto);
+        void Del(Product product);
+
+        Task<IEnumerable<Product>> GetAllAsync();
         //public bool Update(int id, Product product);
-        public void Add(Product dto);
-        public void Save();
+        Task<Product?> GetByIdAsync(int id);
+        Task SaveAsync();
     }
 }

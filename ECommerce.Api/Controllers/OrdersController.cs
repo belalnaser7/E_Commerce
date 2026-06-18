@@ -21,11 +21,11 @@ namespace ECommerce.Api.Controllers
         }
         [Authorize(Roles ="Customer")]
         [HttpPost("Checkout")]
-        public async Task<IActionResult> CheckOut(CheckOutDto dto)
+        public async Task<IActionResult> CheckOutAsync(CheckOutDto dto)
         {
             var userid = User.GetUserid();
             
-            var result = servicesOrder.Checkout(userid, dto);
+            var result =await servicesOrder.CheckoutAsync(userid, dto);
             return result.ToActionResult();
         }
 
@@ -33,7 +33,7 @@ namespace ECommerce.Api.Controllers
         [HttpGet("user/{userid}")]
         public async Task<IActionResult> GetOrders(string userid)
         {
-            var result = servicesOrder.GetOrders(userid);
+            var result =await servicesOrder.GetOrdersAsync(userid);
             return result.ToActionResult();
         }
 
@@ -42,14 +42,14 @@ namespace ECommerce.Api.Controllers
         public async Task<IActionResult> GetOrders()
         {
             var userid = User.GetUserid();
-            var result = servicesOrder.GetOrders(userid);
+            var result =await servicesOrder.GetOrdersAsync(userid);
             return result.ToActionResult();
         }
        
         [HttpGet("{OrderId}")]
         public async Task<IActionResult> GetOrder(int OrderId)
         {
-            var order = servicesOrder.GetEntityById(OrderId);
+            var order =await servicesOrder.GetEntityByIdAsync(OrderId);
             if (!order.IsSuccess)
             {
                 return order.ToActionResult();
@@ -59,7 +59,7 @@ namespace ECommerce.Api.Controllers
             {
                 return Forbid();
             }
-            var result1 = servicesOrder.GetOrderById(OrderId);
+            var result1 =await servicesOrder.GetOrderByIdAsync(OrderId);
 
             return result1.ToActionResult();
         }
