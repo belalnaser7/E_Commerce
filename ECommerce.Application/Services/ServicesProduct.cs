@@ -9,25 +9,28 @@ namespace ECommerce.Application.Services
     public class ServicesProduct : IServicesProduct
     {
         private readonly IRepositoryProduct product;
-        public ServicesProduct(IRepositoryProduct product)
+        private readonly IUnitOfWork unitOfWork;
+
+        public ServicesProduct(IRepositoryProduct product,IUnitOfWork unitOfWork)
         {
             this.product = product;
+            this.unitOfWork = unitOfWork;
         }
 
         public async Task<Result> AddAsync(CreateProductDto dto, string Sellerid)
         {
-            if (dto is null)
-                return Result.Fail("Invalid request");
-            if (string.IsNullOrWhiteSpace(dto.Name))
-                return Result.Fail("The Product Name isn't Valid");
-            if (dto.Price <= 0)
-                return Result.Fail("The Product Price isn't Valid");
-            if (dto.StockQuantity <= 0)
-                return Result.Fail("The Product Quantity isn't Valid");
+            //if (dto is null)
+            //    return Result.Fail("Invalid request");
+            //if (string.IsNullOrWhiteSpace(dto.Name))
+            //    return Result.Fail("The Product Name isn't Valid");
+            //if (dto.Price <= 0)
+            //    return Result.Fail("The Product Price isn't Valid");
+            //if (dto.StockQuantity <= 0)
+            //    return Result.Fail("The Product Quantity isn't Valid");
             var pro = dto.Adapt<Product>();
             pro.SellerId = Sellerid;
            await product.AddAsync(pro);
-           await product.SaveAsync();
+           await unitOfWork.SaveAsync();
             return Result.Success();
         }
 
@@ -37,7 +40,7 @@ namespace ECommerce.Application.Services
             if (product1 is null)
                 return Result.Fail("The Product isn't Exsit");
             product.Del(product1);
-           await product.SaveAsync();
+           await unitOfWork.SaveAsync();
             return Result.Success();
         }
 
@@ -71,14 +74,14 @@ namespace ECommerce.Application.Services
             var Found =await GetEntityByIdAsync(id);
             if (!Found.IsSuccess)
                 return Found;
-            if (string.IsNullOrWhiteSpace(dto.Name))
-                return Result.Fail("The Product Name isn't Valid");
-            if (dto.Price <= 0)
-                return Result.Fail("The Product Price isn't Valid");
-            if (dto.StockQuantity < 0)
-                return Result.Fail("The Product Quantity isn't Valid");
+            //if (string.IsNullOrWhiteSpace(dto.Name))
+            //    return Result.Fail("The Product Name isn't Valid");
+            //if (dto.Price <= 0)
+            //    return Result.Fail("The Product Price isn't Valid");
+            //if (dto.StockQuantity < 0)
+            //    return Result.Fail("The Product Quantity isn't Valid");
             dto.Adapt(Found.Data);
-            await product.SaveAsync();
+            await unitOfWork.SaveAsync();
             return Result.Success();
         }
     }

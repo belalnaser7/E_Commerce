@@ -12,6 +12,6 @@ namespace ECommerce.Application.Interfaces
         Task AddAsync(Cart cart);
         void Remove(CartItem cart);
 
-        Task SaveAsync();
+       
     }
 }

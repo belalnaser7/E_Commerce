@@ -1,0 +1,184 @@
+[2026-06-21 00:20] [INF] UserId= Path= Message=Executed DbCommand ("2,445"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-21 00:20] [INF] UserId= Path= Message=Executed DbCommand ("48"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-21 00:20] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-21 00:20] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-21 00:20] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-21 00:20] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-21 00:20] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-21 00:20] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-21 00:20] [INF] UserId= Path=/swagger Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger""" - null null
+[2026-06-21 00:20] [INF] UserId= Path=/swagger Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger""" - 301 null null 585.0271ms
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 156.1745ms
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/swagger-ui.css Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/swagger-ui.css""" - null null
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/swagger-ui-bundle.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/swagger-ui-bundle.js""" - null null
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/swagger-ui-standalone-preset.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/swagger-ui-standalone-preset.js""" - null null
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/swagger-ui.css Message=Sending file. Request path: '"/swagger-ui.css"'. Physical path: '"N/A"'
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/swagger-ui-standalone-preset.js Message=Sending file. Request path: '"/swagger-ui-standalone-preset.js"'. Physical path: '"N/A"'
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/swagger-ui.css Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/swagger-ui.css""" - 200 152034 "text/css" 37.2076ms
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/swagger-ui-standalone-preset.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/swagger-ui-standalone-preset.js""" - 200 230280 "text/javascript" 35.9268ms
+[2026-06-21 00:20] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-21 00:20] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-21 00:20] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 6.0341ms
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/swagger-ui-bundle.js Message=Sending file. Request path: '"/swagger-ui-bundle.js"'. Physical path: '"N/A"'
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/swagger-ui-bundle.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/swagger-ui-bundle.js""" - 200 1456926 "text/javascript" 63.44ms
+[2026-06-21 00:20] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 232.705ms
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 15.688ms
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/favicon-32x32.png Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/favicon-32x32.png""" - null null
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/favicon-32x32.png Message=Sending file. Request path: '"/favicon-32x32.png"'. Physical path: '"N/A"'
+[2026-06-21 00:20] [INF] UserId= Path=/swagger/favicon-32x32.png Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/favicon-32x32.png""" - 200 628 "image/png" 3.4258ms
+[2026-06-21 01:23] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-21 01:23] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 13.3603ms
+[2026-06-21 01:23] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-21 01:23] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 0.7889ms
+[2026-06-21 01:23] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-21 01:23] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 27.5749ms
+[2026-06-21 01:23] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-21 01:23] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 32.278ms
+[2026-06-21 01:24] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - "application/json" 104
+[2026-06-21 01:24] [INF] UserId= Path=/api/Products Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Seller)"
+[2026-06-21 01:24] [INF] UserId= Path=/api/Products Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-21 01:24] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - 401 0 null 122.8236ms
+[2026-06-21 01:25] [INF] UserId= Path= Message=Executed DbCommand ("246"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-21 01:25] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-21 01:25] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-21 01:25] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-21 01:25] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-21 01:25] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-21 01:25] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-21 01:25] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-21 01:25] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-21 01:25] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 489.0776ms
+[2026-06-21 01:25] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-21 01:25] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-21 01:25] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 5.8776ms
+[2026-06-21 01:25] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 89.29ms
+[2026-06-21 01:25] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-21 01:25] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 57.31ms
+[2026-06-21 01:26] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - "application/json" 102
+[2026-06-21 01:26] [INF] UserId=Anonymous Path=/api/Products Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.Add (ECommerce.Api)"'
+[2026-06-21 01:26] [INF] UserId=Anonymous Path=/api/Products Message=Route matched with "{action = \"Add\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(ECommerce.Application.DTOs.CreateProductDto)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-21 01:26] [INF] UserId=Anonymous Path=/api/Products Message=Executed DbCommand ("2,328"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (Size = 300), @p2='?' (Size = 100), @p3='?' (Size = 30), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (Size = 450), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([CategoryId], [Description], [ImageUrl], [Name], [Price], [SellerId], [Status], [StockQuantity])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+[2026-06-21 01:26] [ERR] UserId=Anonymous Path=/api/Products Message=An exception occurred in the database while saving changes for context type '"ECommerce.Infrastructure.Data.E_commerceDbcontext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'SellerId', table 'E-commerce.dbo.Products'; column does not allow nulls. INSERT fails.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:cdf08c2d-c1a0-4b66-a953-5ac673deb7fb
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+[2026-06-21 01:26] [INF] UserId=Anonymous Path=/api/Products Message=Executed action "ECommerce.Api.Controllers.ProductsController.Add (ECommerce.Api)" in 3996.5294ms
+[2026-06-21 01:26] [INF] UserId=Anonymous Path=/api/Products Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.Add (ECommerce.Api)"'
+[2026-06-21 01:26] [ERR] UserId=null Path=/api/Products Message=Error happened for UserId null at "/api/Products"
+[2026-06-21 01:26] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - 500 null "application/json" 4519.4065ms
+[2026-06-21 01:28] [INF] UserId= Path= Message=Executed DbCommand ("106"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-21 01:28] [INF] UserId= Path= Message=Executed DbCommand ("5"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-21 01:28] [INF] UserId= Path= Message=Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-21 01:28] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-21 01:28] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-21 01:28] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-21 01:28] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-21 01:28] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-21 01:28] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-21 01:28] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 863.226ms
+[2026-06-21 01:28] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-21 01:28] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-21 01:28] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 22.2619ms
+[2026-06-21 01:28] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 110.2264ms
+[2026-06-21 01:28] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-21 01:28] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 61.4654ms
+[2026-06-21 01:29] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - "application/json" 106
+[2026-06-21 01:29] [INF] UserId=Anonymous Path=/api/Products Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.Add (ECommerce.Api)"'
+[2026-06-21 01:29] [INF] UserId=Anonymous Path=/api/Products Message=Route matched with "{action = \"Add\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Add(ECommerce.Application.DTOs.CreateProductDto)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-21 01:29] [INF] UserId=Anonymous Path=/api/Products Message=Executed DbCommand ("96"ms) [Parameters=["@p0='?' (DbType = Int32), @p1='?' (Size = 300), @p2='?' (Size = 100), @p3='?' (Size = 30), @p4='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p5='?' (Size = 450), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Products] ([CategoryId], [Description], [ImageUrl], [Name], [Price], [SellerId], [Status], [StockQuantity])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);"
+[2026-06-21 01:29] [ERR] UserId=Anonymous Path=/api/Products Message=An exception occurred in the database while saving changes for context type '"ECommerce.Infrastructure.Data.E_commerceDbcontext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'SellerId', table 'E-commerce.dbo.Products'; column does not allow nulls. INSERT fails.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.ReadAsyncExecute(Task task, Object state)
+   at Microsoft.Data.SqlClient.SqlDataReader.InvokeAsyncCall[T](SqlDataReaderBaseAsyncCallContext`1 context)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+ClientConnectionId:d4d0ee53-b2bb-45ed-865a-b93bd1c9e617
+Error Number:515,State:2,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+[2026-06-21 01:29] [INF] UserId=Anonymous Path=/api/Products Message=Executed action "ECommerce.Api.Controllers.ProductsController.Add (ECommerce.Api)" in 1019.64ms
+[2026-06-21 01:29] [INF] UserId=Anonymous Path=/api/Products Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.Add (ECommerce.Api)"'
+[2026-06-21 01:29] [ERR] UserId= Path=/api/Products Message=An unhandled exception has occurred while executing the request.
+[2026-06-21 01:29] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - 500 null "text/plain; charset=utf-8" 1391.5252ms

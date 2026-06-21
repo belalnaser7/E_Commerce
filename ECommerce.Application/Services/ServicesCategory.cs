@@ -9,19 +9,21 @@ namespace ECommerce.Application.Services
     public class ServicesCategory : IServicesCategory
     {
         private readonly IRepositoryCategory category;
+        private readonly IUnitOfWork unitOfWork;
 
-        public ServicesCategory(IRepositoryCategory category)
+        public ServicesCategory(IRepositoryCategory category,IUnitOfWork unitOfWork)
         {
             this.category = category;
+            this.unitOfWork = unitOfWork;
         }
 
 
         public async Task<Result> AddAsync(CreateCategoryDto dto)
         {
-            if (string.IsNullOrWhiteSpace(dto.Name))
-            {
-                return Result.Fail("The Name is Empty");
-            }
+            //if (string.IsNullOrWhiteSpace(dto.Name))
+            //{
+            //    return Result.Fail("The Name is Empty");
+            //}
 
             if (await category.IsExistAsync(dto.Name))
             {
@@ -30,7 +32,7 @@ namespace ECommerce.Application.Services
 
             var categoryEntity = dto.Adapt<Category>();
             await category.AddAsync(categoryEntity);
-            await category.SaveAsync();
+            await unitOfWork.SaveAsync();
             return Result.Success();
         }
         public async Task<Result> DelAsync(int id)
@@ -39,7 +41,7 @@ namespace ECommerce.Application.Services
             if (category1 is null)
                 return Result.Fail("This Category isn't Exsit");
             category.Del(category1);
-            await category.SaveAsync();
+            await unitOfWork.SaveAsync();
             return Result.Success();
         }
 
@@ -71,7 +73,7 @@ namespace ECommerce.Application.Services
             if (category2 is null)
                 return Result.Fail("This Category isn't Exsit");
             dto.Adapt(category2);
-            await category.SaveAsync();
+            await unitOfWork.SaveAsync();
             return Result.Success();
 
         }

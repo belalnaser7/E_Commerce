@@ -35,8 +35,7 @@ namespace ECommerce.Infrastructure.Repositories
             await context.Carts.AddAsync(cart);
         }
 
-        public Task SaveAsync() =>
-            context.SaveChangesAsync();
+    
         public void Remove(CartItem cart)
         {
             context.Remove(cart);

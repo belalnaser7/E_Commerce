@@ -34,10 +34,7 @@ namespace ECommerce.Infrastructure.Repositories
             return context.Products.FirstOrDefaultAsync(i => i.Id == id);
         }
 
-        public async Task SaveAsync()
-        {
-           await context.SaveChangesAsync();
-        }
+       
 
     
     }

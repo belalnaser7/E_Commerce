@@ -3,9 +3,13 @@ using ECommerce.Application.Interfaces;
 using ECommerce.Application.Mapping;
 using ECommerce.Application.Police;
 using ECommerce.Application.Services;
+using ECommerce.Application.Validators;
 using ECommerce.Domain.Domain_Models;
 using ECommerce.Infrastructure.Data;
 using ECommerce.Infrastructure.Repositories;
+using ECommerce.Infrastructure.UnitOfWork;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -29,11 +33,19 @@ builder.Services.AddScoped<IRepositoryCart, RepositoryCart>();
 builder.Services.AddScoped<IRepositoryOrder, RepositoryOrder>();
 builder.Services.AddScoped<IServicesOrder, ServicesOrder>();
 builder.Services.AddScoped<IServicesAuz, ServicesAuz>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //builder.Services.AddScoped<AuthorizationHandler<CanDeleteProductRequirement,Product>, CanDeleteProductHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, CanDeleteOrUpdateProductHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, CanViewCartHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, AccessUserOnHisOrderHandler>();
 
+//Auto fluentValidation
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateProductDtoValidator>();
+//builder.Services.AddValidatorsFromAssemblyContaining<UpdateProductDtoValidator>();
+//builder.Services.AddValidatorsFromAssemblyContaining<CheckOutDtoValidation>();
+
+builder.Services.AddFluentValidationAutoValidation();
 
 
 MapsterConfig.RegisterMappings();

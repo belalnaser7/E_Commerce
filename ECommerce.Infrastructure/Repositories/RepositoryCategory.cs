@@ -23,10 +23,7 @@ namespace ECommerce.Infrastructure.Repositories
 
             await context.Categories.AnyAsync(k => k.Name == name);
 
-        public async Task SaveAsync()
-        {
-            await context.SaveChangesAsync();
-        }
+    
 
         public async Task AddAsync(Category dto) =>
            await context.AddAsync(dto);

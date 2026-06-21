@@ -33,9 +33,6 @@ namespace ECommerce.Infrastructure.Repositories
                 .ToListAsync();
         }
 
-        public async Task SaveAsync()
-        {
-           await context.SaveChangesAsync();
-        }
+        
     }
 }

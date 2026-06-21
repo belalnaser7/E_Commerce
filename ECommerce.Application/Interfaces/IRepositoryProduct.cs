@@ -16,6 +16,6 @@ namespace ECommerce.Application.Interfaces
         Task<IEnumerable<Product>> GetAllAsync();
         //public bool Update(int id, Product product);
         Task<Product?> GetByIdAsync(int id);
-        Task SaveAsync();
+       
     }
 }

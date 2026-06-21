@@ -9,11 +9,13 @@ namespace ECommerce.Application.Services
     {
         private readonly IRepositoryCart repositoryCart;
         private readonly IRepositoryProduct repositoryProduct;
+        private readonly IUnitOfWork unitOfWork;
 
-        public ServicesCart(IRepositoryCart repositoryCart, IRepositoryProduct repositoryProduct)
+        public ServicesCart(IRepositoryCart repositoryCart, IRepositoryProduct repositoryProduct,IUnitOfWork unitOfWork)
         {
             this.repositoryCart = repositoryCart;
             this.repositoryProduct = repositoryProduct;
+            this.unitOfWork = unitOfWork;
         }
         public async Task<Result<Cart?>> GetByUserIdAsync(string userId) // helper
         {
@@ -27,8 +29,8 @@ namespace ECommerce.Application.Services
 
         public async Task<Result> AddToCartAsync(string userId, AddToCartDto dto)
         {
-            if (dto.Quantity <= 0)
-                return Result.Fail("The Product Quantity Invalid");
+            //if (dto.Quantity <= 0)
+            //    return Result.Fail("The Product Quantity Invalid");
 
             var product = await repositoryProduct.GetByIdAsync(dto.ProductId);
             if (product is null)
@@ -66,7 +68,7 @@ namespace ECommerce.Application.Services
                     UnitPrice = product.Price,
                 });
             }
-            await repositoryCart.SaveAsync();
+            await unitOfWork.SaveAsync();
 
             return Result.Success();
         }
@@ -81,7 +83,7 @@ namespace ECommerce.Application.Services
 
             cart.Data.Items.Clear();
 
-            await repositoryCart.SaveAsync();
+            await unitOfWork.SaveAsync();
             return Result.Success();
         }
 
@@ -136,7 +138,7 @@ namespace ECommerce.Application.Services
             }
 
             repositoryCart.Remove(existingItem);
-            await repositoryCart.SaveAsync();
+            await unitOfWork.SaveAsync();
             return Result.Success();
 
         }
@@ -157,7 +159,7 @@ namespace ECommerce.Application.Services
                 return Result.Fail("The Cart Item isn't Exsit");
             }
             existingItem.Quantity = dto.Quantity;
-            await repositoryCart.SaveAsync();
+            await unitOfWork.SaveAsync();
             return Result.Success();
 
         }

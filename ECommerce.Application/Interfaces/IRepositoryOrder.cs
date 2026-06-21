@@ -12,7 +12,7 @@ namespace ECommerce.Application.Interfaces
         Task AddAsync(Order order);
         Task<Order?> GetByIdAsync(int orderid);
         Task<List<Order>?> GetByUserIdAsync(string userId);
-        Task SaveAsync();
+       
 
     }
 }

@@ -10,11 +10,14 @@ namespace ECommerce.Application.Services
         private readonly IRepositoryCart repositoryCart;
         private readonly IRepositoryOrder repositoryOrder;
         private readonly IRepositoryProduct repositoryProduct;
-        public ServicesOrder(IRepositoryCart repositoryCart, IRepositoryOrder repositoryOrder, IRepositoryProduct repositoryProduct)
+        private readonly IUnitOfWork unitOfWork;
+
+        public ServicesOrder(IRepositoryCart repositoryCart, IRepositoryOrder repositoryOrder, IRepositoryProduct repositoryProduct,IUnitOfWork unitOfWork)
         {
             this.repositoryCart = repositoryCart;
             this.repositoryOrder = repositoryOrder;
             this.repositoryProduct = repositoryProduct;
+            this.unitOfWork = unitOfWork;
         }
         public async Task<Result<Cart?>> GetCartByUserIdAsync(string userId) // helper
         {
@@ -41,10 +44,10 @@ namespace ECommerce.Application.Services
             {
                 return Result.Fail("The cart isn't Exsit or Empty", ErrorType.NotFound);
             }
-            if (string.IsNullOrWhiteSpace(dto.ShippingAddress))
-            {
-                return Result.Fail("The Address isn't Exsit", ErrorType.NotFound);
-            }
+            //if (string.IsNullOrWhiteSpace(dto.ShippingAddress))
+            //{
+            //    return Result.Fail("The Address isn't Exsit", ErrorType.NotFound);
+            //}
             var products = new Dictionary<int, Product>();
             foreach (var item in cart.Items)
             {
@@ -83,7 +86,7 @@ namespace ECommerce.Application.Services
             }
           await repositoryOrder.AddAsync(order);
             cart.Items.Clear();
-           await repositoryOrder.SaveAsync();
+           await unitOfWork.SaveAsync();
             return Result.Success();
         }
         public async Task<Result<OrderDto?>> GetOrderByIdAsync(int orderId)

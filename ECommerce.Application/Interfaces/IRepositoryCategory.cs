@@ -13,7 +13,7 @@ namespace ECommerce.Application.Interfaces
         Task<IEnumerable<Category>> GetAllAsync();
         Task<Category?> GetByIdAsync(int id);
         Task<bool> IsExistAsync(string name);
-        Task SaveAsync();
+     
         Task AddAsync(Category dto);
         void Del(Category category);
 
