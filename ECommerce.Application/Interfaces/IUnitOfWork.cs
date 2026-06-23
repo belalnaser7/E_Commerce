@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ECommerce.Application.Interfaces
+﻿namespace ECommerce.Application.Interfaces
 {
     public interface IUnitOfWork
     {
+        IRepositoryCart Carts { get; }
+        IRepositoryCategory Categorys { get; }
+        IRepositoryOrder Orders { get; }
+        IRepositoryProduct Products { get; }
         Task SaveAsync();
         Task BeginTransactionAsync();
         Task CommitAsync();

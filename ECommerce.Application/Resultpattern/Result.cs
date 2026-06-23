@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerce.Application.Responses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,5 +28,7 @@ namespace ECommerce.Application.Result_pattern
         {
             return new Result { IsSuccess = false,ErrorMessage=Error, ErrorType = type };
         }
+
+       
     }
 }

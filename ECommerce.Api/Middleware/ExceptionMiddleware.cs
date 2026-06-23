@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using ECommerce.Application.Responses;
+using Microsoft.AspNetCore.Http.HttpResults;
+using System.Net;
 using System.Security.Claims;
 using System.Text.Json;
 
@@ -24,27 +26,27 @@ namespace ECommerce.Api.Middleware
             catch (Exception ex)
             {
 
-                //var method = context.Request.Method;
-                //var path = context.Request.Path;
-                //var queryString = context.Request.QueryString;
-
-
                 var userid = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
                 logger.LogError(ex,"Error happened for UserId {UserId} at {Path}", userid,context.Request.Path);
-
-
-
+                var statusCode = ex switch
+                {
+                   // NotFoundException => 404,
+                   
+                    //UnauthorizedAccessException => 401,
+                    //ArgumentException => 400,
+                    _ => 500
+                };
 
                 context.Response.ContentType = "application/json";
-                context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                context.Response.StatusCode = statusCode;
 
-                var response = new
+                var response = new 
                 {
-                    message = "Something went wrong",
-                    statusCode = 500,
-                    
-                    
+                    Success=false,
+                    Message = "Something went wrong",
+                    StatusCode = 500,
+                   
                 };
 
                 await context.Response.WriteAsync(JsonSerializer.Serialize(response));

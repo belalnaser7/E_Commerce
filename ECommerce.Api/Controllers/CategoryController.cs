@@ -42,8 +42,12 @@ public class CategoryController : ControllerBase
     public async Task<IActionResult> GetById(int id)
     {
         var result = await _categoryService.GetByIdAsync(id);
+        //throw new Exception();
 
-        return result.ToActionResult();
+        var response = result.ToApiResponse();
+        return StatusCode(response.StatusCode, response);
+
+       // return result.ToActionResult();
     }
 
     [Authorize(Roles = "Admin")]
@@ -52,7 +56,9 @@ public class CategoryController : ControllerBase
     {
         var result =await _categoryService.UpdateAsync(id, dto);
 
-        return result.ToActionResult();
+       
+
+       return result.ToActionResult();
     }
 
     [Authorize(Roles = "Admin")]

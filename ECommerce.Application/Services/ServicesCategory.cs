@@ -8,16 +8,13 @@ namespace ECommerce.Application.Services
 {
     public class ServicesCategory : IServicesCategory
     {
-        private readonly IRepositoryCategory category;
+        
         private readonly IUnitOfWork unitOfWork;
 
-        public ServicesCategory(IRepositoryCategory category,IUnitOfWork unitOfWork)
-        {
-            this.category = category;
+        public ServicesCategory(IUnitOfWork unitOfWork)
+        { 
             this.unitOfWork = unitOfWork;
         }
-
-
         public async Task<Result> AddAsync(CreateCategoryDto dto)
         {
             //if (string.IsNullOrWhiteSpace(dto.Name))
@@ -25,29 +22,29 @@ namespace ECommerce.Application.Services
             //    return Result.Fail("The Name is Empty");
             //}
 
-            if (await category.IsExistAsync(dto.Name))
+            if (await unitOfWork.Categorys.IsExistAsync(dto.Name))
             {
                 return Result.Fail("The Name is Already Exsit");
             }
 
             var categoryEntity = dto.Adapt<Category>();
-            await category.AddAsync(categoryEntity);
+            await unitOfWork.Categorys.AddAsync(categoryEntity);
             await unitOfWork.SaveAsync();
             return Result.Success();
         }
         public async Task<Result> DelAsync(int id)
         {
-            var category1 = await category.GetByIdAsync(id);
+            var category1 = await unitOfWork.Categorys.GetByIdAsync(id);
             if (category1 is null)
                 return Result.Fail("This Category isn't Exsit");
-            category.Del(category1);
+            unitOfWork.Categorys.Del(category1);
             await unitOfWork.SaveAsync();
             return Result.Success();
         }
 
         public async Task<Result<IEnumerable<CategoryDto>>> GetAllAsync()
         {
-            var Categories = await category.GetAllAsync();
+            var Categories = await unitOfWork.Categorys.GetAllAsync();
 
             var dto = Categories.Adapt<List<CategoryDto>>();
 
@@ -56,7 +53,7 @@ namespace ECommerce.Application.Services
 
         public async Task<Result<CategoryDto?>> GetByIdAsync(int id)
         {
-            var categoryEntity = await category.GetByIdAsync(id);
+            var categoryEntity = await unitOfWork.Categorys.GetByIdAsync(id);
             if (categoryEntity is null)
             {
                 return Result<CategoryDto?>.Fail("This Category isn't Exsit");
@@ -69,7 +66,7 @@ namespace ECommerce.Application.Services
 
         public async Task<Result> UpdateAsync(int id, UpdateCategotyDto dto)
         {
-            var category2 = await category.GetByIdAsync(id);
+            var category2 = await unitOfWork.Categorys.GetByIdAsync(id);
             if (category2 is null)
                 return Result.Fail("This Category isn't Exsit");
             dto.Adapt(category2);

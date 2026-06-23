@@ -8,13 +8,28 @@ namespace ECommerce.Infrastructure.UnitOfWork
     {
        
         private readonly E_commerceDbcontext dbcontext;
+        
+
+        public IRepositoryCart Carts { get; }
+
+        public IRepositoryCategory Categorys { get; }
+
+        public IRepositoryOrder Orders { get; }
+
+        public IRepositoryProduct Products { get; }
+
         private IDbContextTransaction? transaction;
 
-        public UnitOfWork(E_commerceDbcontext dbcontext)
+        public UnitOfWork(E_commerceDbcontext dbcontext , IRepositoryCart Carts, IRepositoryCategory Categorys, IRepositoryOrder Orders, IRepositoryProduct Products)
         {
             this.dbcontext = dbcontext;
-            
+            this.Carts = Carts;
+            this.Categorys = Categorys;
+            this.Orders = Orders;
+            this.Products = Products;
         }
+
+     
 
         public async Task BeginTransactionAsync()
         {

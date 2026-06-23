@@ -7,19 +7,17 @@ namespace ECommerce.Application.Services
 {
     public class ServicesCart : IServicesCart
     {
-        private readonly IRepositoryCart repositoryCart;
-        private readonly IRepositoryProduct repositoryProduct;
+        
         private readonly IUnitOfWork unitOfWork;
 
-        public ServicesCart(IRepositoryCart repositoryCart, IRepositoryProduct repositoryProduct,IUnitOfWork unitOfWork)
+        public ServicesCart(IUnitOfWork unitOfWork)
         {
-            this.repositoryCart = repositoryCart;
-            this.repositoryProduct = repositoryProduct;
+            
             this.unitOfWork = unitOfWork;
         }
         public async Task<Result<Cart?>> GetByUserIdAsync(string userId) // helper
         {
-            var cart = await repositoryCart.GetByUserIdAsync(userId);
+            var cart = await unitOfWork.Carts.GetByUserIdAsync(userId);
             if (cart is null)
             {
                 return Result<Cart?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
@@ -32,7 +30,7 @@ namespace ECommerce.Application.Services
             //if (dto.Quantity <= 0)
             //    return Result.Fail("The Product Quantity Invalid");
 
-            var product = await repositoryProduct.GetByIdAsync(dto.ProductId);
+            var product = await unitOfWork.Products.GetByIdAsync(dto.ProductId);
             if (product is null)
             {
                 return Result.Fail("The Product isn't Exsit");
@@ -48,7 +46,7 @@ namespace ECommerce.Application.Services
                     UserId = userId
                 };
 
-               await repositoryCart.AddAsync(cart);
+               await unitOfWork.Carts.AddAsync(cart);
             }
             else
             {
@@ -137,7 +135,7 @@ namespace ECommerce.Application.Services
                 return Result.Fail("The Cart Item isn't Exsit");
             }
 
-            repositoryCart.Remove(existingItem);
+            unitOfWork.Carts.Remove(existingItem);
             await unitOfWork.SaveAsync();
             return Result.Success();
 
@@ -145,8 +143,8 @@ namespace ECommerce.Application.Services
 
         public async Task<Result> UpdateQuantityAsync(string userId, UpdateCartItemDto dto)
         {
-            if (dto.Quantity <= 0)
-                return Result.Fail("The Product Quantity Invalid");
+            //if (dto.Quantity <= 0)
+            //    return Result.Fail("The Product Quantity Invalid");
             var cart =await GetByUserIdAsync(userId);
             if (!cart.IsSuccess)
             {

@@ -7,21 +7,17 @@ namespace ECommerce.Application.Services
 {
     public class ServicesOrder : IServicesOrder
     {
-        private readonly IRepositoryCart repositoryCart;
-        private readonly IRepositoryOrder repositoryOrder;
-        private readonly IRepositoryProduct repositoryProduct;
+      
         private readonly IUnitOfWork unitOfWork;
 
-        public ServicesOrder(IRepositoryCart repositoryCart, IRepositoryOrder repositoryOrder, IRepositoryProduct repositoryProduct,IUnitOfWork unitOfWork)
+        public ServicesOrder(IUnitOfWork unitOfWork)
         {
-            this.repositoryCart = repositoryCart;
-            this.repositoryOrder = repositoryOrder;
-            this.repositoryProduct = repositoryProduct;
+           
             this.unitOfWork = unitOfWork;
         }
         public async Task<Result<Cart?>> GetCartByUserIdAsync(string userId) // helper
         {
-            var cart =await repositoryCart.GetByUserIdAsync(userId);
+            var cart =await unitOfWork.Carts.GetByUserIdAsync(userId);
             if (cart is null)
             {
                 return Result<Cart?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
@@ -30,7 +26,7 @@ namespace ECommerce.Application.Services
         }
         public async Task<Result<Order?>> GetEntityByIdAsync(int orderId) // helper
         {
-            var order =await repositoryOrder.GetByIdAsync(orderId);
+            var order =await unitOfWork.Orders.GetByIdAsync(orderId);
             if (order is null)
             {
                 return Result<Order?>.Fail("The Order isn't Exsit", ErrorType.NotFound);
@@ -39,59 +35,73 @@ namespace ECommerce.Application.Services
         }
         public async Task<Result> CheckoutAsync(string userId, CheckOutDto dto)
         {
-            var cart =await repositoryCart.GetByUserIdAsync(userId);
-            if (cart is null||cart.Items is null || !cart.Items.Any())
+            await unitOfWork.BeginTransactionAsync();
+            try
             {
-                return Result.Fail("The cart isn't Exsit or Empty", ErrorType.NotFound);
-            }
-            //if (string.IsNullOrWhiteSpace(dto.ShippingAddress))
-            //{
-            //    return Result.Fail("The Address isn't Exsit", ErrorType.NotFound);
-            //}
-            var products = new Dictionary<int, Product>();
-            foreach (var item in cart.Items)
-            {
-                var product =await repositoryProduct.GetByIdAsync(item.ProductId);
+                var cart = await unitOfWork.Carts.GetByUserIdAsync(userId);
+                if (cart is null || cart.Items is null || !cart.Items.Any())
+                {
+                    await unitOfWork.RollbackAsync();
+                    return Result.Fail("The cart isn't Exsit or Empty", ErrorType.NotFound);
+                }
+                //if (string.IsNullOrWhiteSpace(dto.ShippingAddress))
+                //{
+                //    return Result.Fail("The Address isn't Exsit", ErrorType.NotFound);
+                //}
+                var products = new Dictionary<int, Product>();
+                foreach (var item in cart.Items)
+                {
+                    var product = await unitOfWork.Products.GetByIdAsync(item.ProductId);
 
-                if (product is null)
-                {
-                    return Result.Fail("The Product  isn't Exsit", ErrorType.NotFound);
-                }
-                if (item.Quantity > product.StockQuantity)
-                {
-                    return Result.Fail("The Quantity is Ivalid");
-                }
-                products.Add(product.Id, product);
-            }
-            var order = new Order()
-            {
-                UserId = userId,
-                ShippingAddress = dto.ShippingAddress,
-                Items = cart.Items.Select(i =>
-                {
-                    var product = products[i.ProductId];
-                    return (new OrderItem()
+                    if (product is null)
                     {
-                        ProductId = i.ProductId,
-                        Quantity = i.Quantity,
-                        UnitPrice = product.Price
-                    });
-                }).ToList()
-            };
-            order.TotalPrice = order.Items.Sum(i => i.UnitPrice * i.Quantity);
-            foreach (var item in cart.Items)
-            {
-                var product = products[item.ProductId];
-                product.StockQuantity -= item.Quantity;
+                        await unitOfWork.RollbackAsync();
+                        return Result.Fail("The Product  isn't Exsit", ErrorType.NotFound);
+                    }
+                    if (item.Quantity > product.StockQuantity)
+                    {
+                        await unitOfWork.RollbackAsync();
+                        return Result.Fail("The Quantity is Ivalid");
+                    }
+                    products.Add(product.Id, product);
+                }
+                var order = new Order()
+                {
+                    UserId = userId,
+                    ShippingAddress = dto.ShippingAddress,
+                    Items = cart.Items.Select(i =>
+                    {
+                        var product = products[i.ProductId];
+                        return (new OrderItem()
+                        {
+                            ProductId = i.ProductId,
+                            Quantity = i.Quantity,
+                            UnitPrice = product.Price
+                        });
+                    }).ToList()
+                };
+                order.TotalPrice = order.Items.Sum(i => i.UnitPrice * i.Quantity);
+                foreach (var item in cart.Items)
+                {
+                    var product = products[item.ProductId];
+                    product.StockQuantity -= item.Quantity;
+                }
+                await unitOfWork.Orders.AddAsync(order);
+                cart.Items.Clear();
+                await unitOfWork.SaveAsync();
+                await unitOfWork.CommitAsync();
+                return Result.Success();
             }
-          await repositoryOrder.AddAsync(order);
-            cart.Items.Clear();
-           await unitOfWork.SaveAsync();
-            return Result.Success();
+            catch 
+            {
+                await unitOfWork.RollbackAsync();
+                return Result.Fail("Something went wrong");
+            }
+            
         }
         public async Task<Result<OrderDto?>> GetOrderByIdAsync(int orderId)
         {
-            var order =await repositoryOrder.GetByIdAsync(orderId);
+            var order = await unitOfWork.Orders.GetByIdAsync(orderId);
             if (order is null)
             {
                 return Result<OrderDto?>.Fail(
@@ -119,7 +129,7 @@ namespace ECommerce.Application.Services
 
         public async Task<Result<List<OrderDto>>> GetOrdersAsync(string userId)
         {
-            var order =await repositoryOrder.GetByUserIdAsync(userId);
+            var order = await unitOfWork.Orders.GetByUserIdAsync(userId);
 
 
             return Result<List<OrderDto>>.Success(

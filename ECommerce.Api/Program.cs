@@ -137,9 +137,6 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization(policy =>
 {
     policy.AddPolicy("CanManageProducts", policy => policy.RequireRole("Admin", "Seller"));
-});
-builder.Services.AddAuthorization(policy =>
-{
     policy.AddPolicy("CanShow", p => p.RequireRole("Admin", "Customer"));
 });
 
@@ -176,7 +173,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseMiddleware<ExceptionMiddleware>();
-
+//app.UseMiddleware<ApiResponseMiddleware>();
 app.UseAuthentication();
 
 app.UseAuthorization();

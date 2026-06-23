@@ -1,0 +1,1191 @@
+[2026-06-23 11:04] [INF] UserId= Path= Message=Executed DbCommand ("705"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 11:04] [INF] UserId= Path= Message=Executed DbCommand ("5"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 11:04] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 11:04] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 11:04] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 11:04] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 11:04] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 11:04] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 11:04] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 11:04] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 3901.2432ms
+[2026-06-23 11:04] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 11:04] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 11:04] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 5.09ms
+[2026-06-23 11:04] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 315.8731ms
+[2026-06-23 11:04] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 11:04] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 25.762ms
+[2026-06-23 11:05] [INF] UserId= Path=/api/Cart/4 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Cart/4""" - null null
+[2026-06-23 11:05] [INF] UserId=Anonymous Path=/api/Cart/4 Message=Executing endpoint '"ECommerce.Api.Controllers.CartController.GetCartAsync (ECommerce.Api)"'
+[2026-06-23 11:05] [INF] UserId=Anonymous Path=/api/Cart/4 Message=Route matched with "{action = \"GetCart\", controller = \"Cart\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCartAsync(System.String)" on controller "ECommerce.Api.Controllers.CartController" ("ECommerce.Api").
+[2026-06-23 11:05] [INF] UserId=Anonymous Path=/api/Cart/4 Message=Executed DbCommand ("497"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[CreatedAt], [t].[UserId], [t0].[Id], [t0].[CartId], [t0].[ProductId], [t0].[Quantity], [t0].[UnitPrice], [t0].[Id0], [t0].[CategoryId], [t0].[Description], [t0].[ImageUrl], [t0].[Name], [t0].[Price], [t0].[SellerId], [t0].[Status], [t0].[StockQuantity]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[UserId]
+    FROM [Carts] AS [c]
+    WHERE [c].[UserId] = @__userId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [c0].[Id], [c0].[CartId], [c0].[ProductId], [c0].[Quantity], [c0].[UnitPrice], [p].[Id] AS [Id0], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+    FROM [CartItems] AS [c0]
+    INNER JOIN [Products] AS [p] ON [c0].[ProductId] = [p].[Id]
+) AS [t0] ON [t].[Id] = [t0].[CartId]
+ORDER BY [t].[Id], [t0].[Id]"
+[2026-06-23 11:05] [INF] UserId=Anonymous Path=/api/Cart/4 Message=Executing "NotFoundObjectResult", writing value of type '"System.String"'.
+[2026-06-23 11:05] [INF] UserId=Anonymous Path=/api/Cart/4 Message=Executed action "ECommerce.Api.Controllers.CartController.GetCartAsync (ECommerce.Api)" in 813.7548ms
+[2026-06-23 11:05] [INF] UserId=Anonymous Path=/api/Cart/4 Message=Executed endpoint '"ECommerce.Api.Controllers.CartController.GetCartAsync (ECommerce.Api)"'
+[2026-06-23 11:05] [INF] UserId= Path=/api/Cart/4 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Cart/4""" - 404 null "text/plain; charset=utf-8" 1024.1276ms
+[2026-06-23 11:05] [INF] UserId= Path=/api/Cart Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Cart""" - null null
+[2026-06-23 11:05] [INF] UserId= Path=/api/Cart Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Customer)"
+[2026-06-23 11:05] [INF] UserId= Path=/api/Cart Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 11:05] [INF] UserId= Path=/api/Cart Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Cart""" - 401 0 null 18.6314ms
+[2026-06-23 11:12] [INF] UserId= Path= Message=Executed DbCommand ("78"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 11:12] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 11:12] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 11:12] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 11:12] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 11:12] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 11:12] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 11:12] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 11:12] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 11:12] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 881.9545ms
+[2026-06-23 11:12] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 11:12] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 11:12] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 40.3167ms
+[2026-06-23 11:12] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 128.0876ms
+[2026-06-23 11:12] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 11:12] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 31.8319ms
+[2026-06-23 11:13] [INF] UserId= Path=/api/Cart Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Cart""" - null null
+[2026-06-23 11:13] [INF] UserId= Path=/api/Cart Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Customer)"
+[2026-06-23 11:13] [INF] UserId= Path=/api/Cart Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 11:13] [INF] UserId= Path=/api/Cart Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Cart""" - 401 0 null 161.2723ms
+[2026-06-23 15:09] [INF] UserId= Path= Message=Executed DbCommand ("289"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:09] [INF] UserId= Path= Message=Executed DbCommand ("6"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:09] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:09] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 15:09] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 15:09] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 15:09] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 15:09] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 15:09] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 15:09] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 893.754ms
+[2026-06-23 15:09] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 15:09] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 15:09] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 7.1163ms
+[2026-06-23 15:09] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 131.2343ms
+[2026-06-23 15:09] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 15:09] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 36.4975ms
+[2026-06-23 15:10] [INF] UserId= Path=/api/Auz/Register Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Register""" - "application/json" 89
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executing endpoint '"ECommerce.Api.Controllers.AuzController.register (ECommerce.Api)"'
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Route matched with "{action = \"register\", controller = \"Auz\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] register(ECommerce.Application.DTOs.RegisterDto)" on controller "ECommerce.Api.Controllers.AuzController" ("ECommerce.Api").
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executed DbCommand ("252"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0"
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executed DbCommand ("273"ms) [Parameters=["@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (Size = 256), @p4='?' (DbType = Boolean), @p5='?' (DbType = Boolean), @p6='?' (DbType = DateTimeOffset), @p7='?' (Size = 256), @p8='?' (Size = 256), @p9='?' (Size = 4000), @p10='?' (Size = 4000), @p11='?' (DbType = Boolean), @p12='?' (Size = 4000), @p13='?' (DbType = Boolean), @p14='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [Email], [EmailConfirmed], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14);"
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executed DbCommand ("44"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0"
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executed DbCommand ("32"ms) [Parameters=["@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1"
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executed DbCommand ("3"ms) [Parameters=["@__normalizedRoleName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0"
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executed DbCommand ("4"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0"
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executed DbCommand ("290"ms) [Parameters=["@p0='?' (Size = 450), @p1='?' (Size = 450), @p16='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p17='?' (Size = 4000), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (DbType = Boolean), @p7='?' (DbType = DateTimeOffset), @p8='?' (Size = 256), @p9='?' (Size = 256), @p10='?' (Size = 4000), @p11='?' (Size = 4000), @p12='?' (DbType = Boolean), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [Email] = @p4, [EmailConfirmed] = @p5, [LockoutEnabled] = @p6, [LockoutEnd] = @p7, [NormalizedEmail] = @p8, [NormalizedUserName] = @p9, [PasswordHash] = @p10, [PhoneNumber] = @p11, [PhoneNumberConfirmed] = @p12, [SecurityStamp] = @p13, [TwoFactorEnabled] = @p14, [UserName] = @p15
+OUTPUT 1
+WHERE [Id] = @p16 AND [ConcurrencyStamp] = @p17;"
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executing StatusCodeResult, setting HTTP status code 200
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executed action "ECommerce.Api.Controllers.AuzController.register (ECommerce.Api)" in 2151.338ms
+[2026-06-23 15:10] [INF] UserId=Anonymous Path=/api/Auz/Register Message=Executed endpoint '"ECommerce.Api.Controllers.AuzController.register (ECommerce.Api)"'
+[2026-06-23 15:10] [INF] UserId= Path=/api/Auz/Register Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Register""" - 200 0 null 2352.795ms
+[2026-06-23 15:11] [INF] UserId= Path=/api/Auz/Login Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - "application/json" 58
+[2026-06-23 15:11] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executing endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-23 15:11] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Route matched with "{action = \"Login\", controller = \"Auz\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ECommerce.Application.DTOs.LoginDto)" on controller "ECommerce.Api.Controllers.AuzController" ("ECommerce.Api").
+[2026-06-23 15:11] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed DbCommand ("34"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0"
+[2026-06-23 15:11] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed DbCommand ("70"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[2026-06-23 15:11] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.LoginResponseDto"'.
+[2026-06-23 15:11] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed action "ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)" in 419.3724ms
+[2026-06-23 15:11] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-23 15:11] [INF] UserId= Path=/api/Auz/Login Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - 200 null "application/json; charset=utf-8" 448.0616ms
+[2026-06-23 15:12] [INF] UserId= Path=/api/Cart/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Cart/2""" - null null
+[2026-06-23 15:12] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Cart/2 Message=Executing endpoint '"ECommerce.Api.Controllers.CartController.GetCartAsync (ECommerce.Api)"'
+[2026-06-23 15:12] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Cart/2 Message=Route matched with "{action = \"GetCart\", controller = \"Cart\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetCartAsync(System.String)" on controller "ECommerce.Api.Controllers.CartController" ("ECommerce.Api").
+[2026-06-23 15:12] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Cart/2 Message=Executed DbCommand ("112"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[CreatedAt], [t].[UserId], [t0].[Id], [t0].[CartId], [t0].[ProductId], [t0].[Quantity], [t0].[UnitPrice], [t0].[Id0], [t0].[CategoryId], [t0].[Description], [t0].[ImageUrl], [t0].[Name], [t0].[Price], [t0].[SellerId], [t0].[Status], [t0].[StockQuantity]
+FROM (
+    SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[UserId]
+    FROM [Carts] AS [c]
+    WHERE [c].[UserId] = @__userId_0
+) AS [t]
+LEFT JOIN (
+    SELECT [c0].[Id], [c0].[CartId], [c0].[ProductId], [c0].[Quantity], [c0].[UnitPrice], [p].[Id] AS [Id0], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+    FROM [CartItems] AS [c0]
+    INNER JOIN [Products] AS [p] ON [c0].[ProductId] = [p].[Id]
+) AS [t0] ON [t].[Id] = [t0].[CartId]
+ORDER BY [t].[Id], [t0].[Id]"
+[2026-06-23 15:12] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Cart/2 Message=Executing "NotFoundObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:12] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Cart/2 Message=Executed action "ECommerce.Api.Controllers.CartController.GetCartAsync (ECommerce.Api)" in 216.0053ms
+[2026-06-23 15:12] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Cart/2 Message=Executed endpoint '"ECommerce.Api.Controllers.CartController.GetCartAsync (ECommerce.Api)"'
+[2026-06-23 15:12] [INF] UserId= Path=/api/Cart/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Cart/2""" - 404 null "text/plain; charset=utf-8" 346.5852ms
+[2026-06-23 15:13] [INF] UserId= Path=/api/Category Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - null null
+[2026-06-23 15:13] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)"'
+[2026-06-23 15:13] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Route matched with "{action = \"GetAll\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll()" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 15:13] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed DbCommand ("54"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]"
+[2026-06-23 15:13] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[ECommerce.Application.DTOs.CategoryDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 15:13] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)" in 218.1229ms
+[2026-06-23 15:13] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)"'
+[2026-06-23 15:13] [INF] UserId= Path=/api/Category Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - 200 null "application/json; charset=utf-8" 282.3962ms
+[2026-06-23 15:15] [INF] UserId= Path= Message=Executed DbCommand ("85"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:15] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:15] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:15] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 15:15] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 15:15] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 15:15] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 15:15] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 15:15] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 15:15] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 1151.5389ms
+[2026-06-23 15:15] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 15:15] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 15:15] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 24.3439ms
+[2026-06-23 15:15] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 126.9433ms
+[2026-06-23 15:15] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 15:15] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 49.7784ms
+[2026-06-23 15:15] [INF] UserId= Path=/api/Products/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - null null
+[2026-06-23 15:15] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:15] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:15] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed DbCommand ("48"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:15] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:15] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 224.0047ms
+[2026-06-23 15:15] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:15] [ERR] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Error happened for UserId "c0c501a8-f99d-42fa-927c-db751c0f816c" at "/api/Products/2"
+[2026-06-23 15:15] [INF] UserId= Path=/api/Products/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - 500 null "application/json" 1207.6812ms
+[2026-06-23 15:16] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - null null
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Route matched with "{action = \"GetAll\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync()" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed DbCommand ("46"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]"
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[ECommerce.Application.DTOs.ProductDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)" in 256.4495ms
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 15:16] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - 200 null "application/json" 287.9976ms
+[2026-06-23 15:16] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - null null
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.ProductDto"'.
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 27.3644ms
+[2026-06-23 15:16] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:16] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - 200 null "application/json" 42.7605ms
+[2026-06-23 15:17] [INF] UserId= Path=/api/Products/120 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/120""" - null null
+[2026-06-23 15:17] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/120 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:17] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/120 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:17] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/120 Message=Executed DbCommand ("2"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:17] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/120 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:17] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/120 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 10.8673ms
+[2026-06-23 15:17] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/120 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:17] [ERR] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/120 Message=Error happened for UserId "c0c501a8-f99d-42fa-927c-db751c0f816c" at "/api/Products/120"
+[2026-06-23 15:17] [INF] UserId= Path=/api/Products/120 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/120""" - 500 null "application/json" 206.7085ms
+[2026-06-23 15:22] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "DELETE" "http"://"localhost:5052""""/api/Products/12""" - null null
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)"'
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"Delete\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed DbCommand ("80"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Authorization failed. "These requirements were not met:
+ECommerce.Application.Police.CanDeleteOrUpdateProductRequirement"
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing ForbidResult with authentication schemes ([]).
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=AuthenticationScheme: "Bearer" was forbidden.
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)" in 133.1339ms
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)"'
+[2026-06-23 15:22] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "DELETE" "http"://"localhost:5052""""/api/Products/12""" - 403 null "application/json" 148.8323ms
+[2026-06-23 15:22] [INF] UserId= Path=/api/Products/1 Message=Request starting "HTTP/1.1" "DELETE" "http"://"localhost:5052""""/api/Products/1""" - null null
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/1 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)"'
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/1 Message=Route matched with "{action = \"Delete\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/1 Message=Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/1 Message=Executing "NotFoundObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/1 Message=Executed action "ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)" in 4.7332ms
+[2026-06-23 15:22] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/1 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)"'
+[2026-06-23 15:22] [ERR] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/1 Message=Error happened for UserId "c0c501a8-f99d-42fa-927c-db751c0f816c" at "/api/Products/1"
+[2026-06-23 15:22] [INF] UserId= Path=/api/Products/1 Message=Request finished "HTTP/1.1" "DELETE" "http"://"localhost:5052""""/api/Products/1""" - 500 null "application/json" 182.5707ms
+[2026-06-23 15:35] [INF] UserId= Path= Message=Executed DbCommand ("211"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:35] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:35] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:35] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 15:35] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 15:35] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 15:35] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 15:35] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 15:35] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 15:35] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 943.109ms
+[2026-06-23 15:35] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 15:35] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 15:35] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 26.9178ms
+[2026-06-23 15:35] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 141.5008ms
+[2026-06-23 15:35] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 15:35] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 42.7329ms
+[2026-06-23 15:35] [INF] UserId= Path=/api/Products/22 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/22""" - null null
+[2026-06-23 15:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/22 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/22 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/22 Message=Executed DbCommand ("5"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/22 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/22 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 174.4743ms
+[2026-06-23 15:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/22 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:35] [ERR] UserId= Path=/api/Products/22 Message=An unhandled exception has occurred while executing the request.
+[2026-06-23 15:35] [INF] UserId= Path=/api/Products/22 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/22""" - 500 null "text/plain; charset=utf-8" 615.0487ms
+[2026-06-23 15:36] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "PUT" "http"://"localhost:5052""""/api/Products/12""" - "application/json" 104
+[2026-06-23 15:36] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.Update (ECommerce.Api)"'
+[2026-06-23 15:36] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"Update\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(Int32, ECommerce.Application.DTOs.UpdateProductDto)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:36] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing "BadRequestObjectResult", writing value of type '"Microsoft.AspNetCore.Mvc.ValidationProblemDetails"'.
+[2026-06-23 15:36] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.Update (ECommerce.Api)" in 150.565ms
+[2026-06-23 15:36] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.Update (ECommerce.Api)"'
+[2026-06-23 15:36] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "PUT" "http"://"localhost:5052""""/api/Products/12""" - 400 null "application/json" 174.744ms
+[2026-06-23 15:37] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - null null
+[2026-06-23 15:37] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:37] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:37] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:37] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.ProductDto"'.
+[2026-06-23 15:37] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 201.5358ms
+[2026-06-23 15:37] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:37] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - 200 null "application/json" 254.2872ms
+[2026-06-23 15:39] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "PUT" "http"://"localhost:5052""""/api/Products/12""" - "application/json" 106
+[2026-06-23 15:39] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.Update (ECommerce.Api)"'
+[2026-06-23 15:39] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"Update\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Update(Int32, ECommerce.Application.DTOs.UpdateProductDto)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:39] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:39] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Authorization failed. "These requirements were not met:
+ECommerce.Application.Police.CanDeleteOrUpdateProductRequirement"
+[2026-06-23 15:39] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing ForbidResult with authentication schemes ([]).
+[2026-06-23 15:39] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=AuthenticationScheme: "Bearer" was forbidden.
+[2026-06-23 15:39] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.Update (ECommerce.Api)" in 25.2822ms
+[2026-06-23 15:39] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.Update (ECommerce.Api)"'
+[2026-06-23 15:39] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "PUT" "http"://"localhost:5052""""/api/Products/12""" - 403 null "application/json" 34.7361ms
+[2026-06-23 15:41] [INF] UserId= Path= Message=Executed DbCommand ("85"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:41] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:41] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:41] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 15:41] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 15:41] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 15:41] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 15:41] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 15:41] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 15:41] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 758.7393ms
+[2026-06-23 15:41] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 15:41] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 15:41] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 9.885ms
+[2026-06-23 15:41] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 107.1287ms
+[2026-06-23 15:41] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 15:41] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 40.4753ms
+[2026-06-23 15:41] [INF] UserId= Path=/api/Products/22 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/22""" - null null
+[2026-06-23 15:41] [INF] UserId= Path=/api/Products/22 Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Customer)"
+[2026-06-23 15:41] [INF] UserId= Path=/api/Products/22 Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 15:41] [INF] UserId= Path=/api/Products/22 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/22""" - 401 null "application/json" 166.7163ms
+[2026-06-23 15:42] [INF] UserId= Path=/api/Products/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - null null
+[2026-06-23 15:42] [INF] UserId= Path=/api/Products/2 Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Customer)"
+[2026-06-23 15:42] [INF] UserId= Path=/api/Products/2 Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 15:42] [INF] UserId= Path=/api/Products/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - 401 null "application/json" 13.7843ms
+[2026-06-23 15:42] [INF] UserId= Path=/api/Products/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - null null
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 153.8429ms
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:42] [ERR] UserId= Path=/api/Products/2 Message=An unhandled exception has occurred while executing the request.
+[2026-06-23 15:42] [INF] UserId= Path=/api/Products/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - 500 null "text/plain; charset=utf-8" 452.5145ms
+[2026-06-23 15:42] [INF] UserId= Path=/api/Products/222 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/222""" - null null
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executed DbCommand ("2"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 68.0317ms
+[2026-06-23 15:42] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:42] [ERR] UserId= Path=/api/Products/222 Message=An unhandled exception has occurred while executing the request.
+[2026-06-23 15:42] [INF] UserId= Path=/api/Products/222 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/222""" - 500 null "text/plain; charset=utf-8" 312.1262ms
+[2026-06-23 15:43] [INF] UserId= Path= Message=Executed DbCommand ("70"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:43] [INF] UserId= Path= Message=Executed DbCommand ("6"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:43] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:43] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 15:43] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 15:43] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 15:43] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 15:43] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 15:43] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 15:43] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 891.0527ms
+[2026-06-23 15:43] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 15:43] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 15:43] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 10.9349ms
+[2026-06-23 15:43] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 104.0151ms
+[2026-06-23 15:43] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 15:43] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 34.8085ms
+[2026-06-23 15:43] [INF] UserId= Path=/api/Products/222 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/222""" - null null
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 158.7432ms
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/222 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:43] [ERR] UserId= Path=/api/Products/222 Message=An unhandled exception has occurred while executing the request.
+[2026-06-23 15:43] [INF] UserId= Path=/api/Products/222 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/222""" - 500 null "text/plain; charset=utf-8" 542.3771ms
+[2026-06-23 15:43] [INF] UserId= Path=/api/Products/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - null null
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 25.4797ms
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:43] [ERR] UserId= Path=/api/Products/2 Message=An unhandled exception has occurred while executing the request.
+[2026-06-23 15:43] [INF] UserId= Path=/api/Products/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - 500 null "text/plain; charset=utf-8" 260.7203ms
+[2026-06-23 15:43] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - null null
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed DbCommand ("2"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.ProductDto"'.
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 153.7048ms
+[2026-06-23 15:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:43] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - 200 null "application/json" 165.6399ms
+[2026-06-23 15:52] [INF] UserId= Path= Message=Executed DbCommand ("177"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:52] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:52] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:52] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 15:52] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 15:52] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 15:52] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 15:52] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 15:52] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 15:52] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 948.6087ms
+[2026-06-23 15:52] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 15:52] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 15:52] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 19.166ms
+[2026-06-23 15:52] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 180.5584ms
+[2026-06-23 15:52] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 15:52] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 86.1111ms
+[2026-06-23 15:52] [INF] UserId= Path=/api/Products/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - null null
+[2026-06-23 15:52] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:52] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:52] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed DbCommand ("19"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:52] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:52] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 158.3589ms
+[2026-06-23 15:52] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:52] [INF] UserId= Path=/api/Products/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - 400 null "text/plain; charset=utf-8" 435.7021ms
+[2026-06-23 15:53] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - null null
+[2026-06-23 15:53] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:53] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:53] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:53] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.ProductDto"'.
+[2026-06-23 15:53] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 180.7474ms
+[2026-06-23 15:53] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:53] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - 200 null "application/json; charset=utf-8" 195.729ms
+[2026-06-23 15:57] [INF] UserId= Path= Message=Executed DbCommand ("157"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:57] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:57] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 15:57] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 15:57] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 15:57] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 15:57] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 15:57] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 15:57] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 15:57] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 15:57] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 930.0949ms
+[2026-06-23 15:57] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 8.6882ms
+[2026-06-23 15:57] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 15:57] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 97.0768ms
+[2026-06-23 15:57] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 15:57] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 34.2349ms
+[2026-06-23 15:57] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - null null
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.ProductDto"'.
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 291.7663ms
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:57] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - 200 null "application/json; charset=utf-8" 546.7604ms
+[2026-06-23 15:57] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - null null
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.ProductDto"'.
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 26.44ms
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:57] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/12""" - 200 null "application/json; charset=utf-8" 32.6372ms
+[2026-06-23 15:57] [INF] UserId= Path=/api/Products/122 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/122""" - null null
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/122 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/122 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/122 Message=Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/122 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/122 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 15.6406ms
+[2026-06-23 15:57] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/122 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 15:57] [INF] UserId= Path=/api/Products/122 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/122""" - 400 null "text/plain; charset=utf-8" 24.8255ms
+[2026-06-23 15:59] [INF] UserId= Path=/api/Products/2222 Message=Request starting "HTTP/1.1" "DELETE" "http"://"localhost:5052""""/api/Products/2222""" - null null
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2222 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)"'
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2222 Message=Route matched with "{action = \"Delete\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2222 Message=Executed DbCommand ("7"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2222 Message=Executing "NotFoundObjectResult", writing value of type '"System.String"'.
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2222 Message=Executed action "ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)" in 19.7222ms
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2222 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)"'
+[2026-06-23 15:59] [INF] UserId= Path=/api/Products/2222 Message=Request finished "HTTP/1.1" "DELETE" "http"://"localhost:5052""""/api/Products/2222""" - 404 null "text/plain; charset=utf-8" 29.4802ms
+[2026-06-23 15:59] [INF] UserId= Path=/api/Products/12 Message=Request starting "HTTP/1.1" "DELETE" "http"://"localhost:5052""""/api/Products/12""" - null null
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)"'
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Route matched with "{action = \"Delete\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Delete(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed DbCommand ("2"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Authorization failed. "These requirements were not met:
+ECommerce.Application.Police.CanDeleteOrUpdateProductRequirement"
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executing ForbidResult with authentication schemes ([]).
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=AuthenticationScheme: "Bearer" was forbidden.
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed action "ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)" in 46.0392ms
+[2026-06-23 15:59] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/12 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.Delete (ECommerce.Api)"'
+[2026-06-23 15:59] [INF] UserId= Path=/api/Products/12 Message=Request finished "HTTP/1.1" "DELETE" "http"://"localhost:5052""""/api/Products/12""" - 403 0 null 47.8192ms
+[2026-06-23 16:00] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - null null
+[2026-06-23 16:00] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 16:00] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Route matched with "{action = \"GetAll\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync()" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 16:00] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed DbCommand ("105"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]"
+[2026-06-23 16:00] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[ECommerce.Application.DTOs.ProductDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 16:00] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)" in 159.5561ms
+[2026-06-23 16:00] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 16:00] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - 200 null "application/json; charset=utf-8" 169.4457ms
+[2026-06-23 16:02] [INF] UserId= Path= Message=Executed DbCommand ("59"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:02] [INF] UserId= Path= Message=Executed DbCommand ("11"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:02] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:02] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 16:02] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 16:02] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 16:02] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 16:02] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 16:02] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 16:02] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 906.4637ms
+[2026-06-23 16:02] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 16:02] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 16:02] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 15.6119ms
+[2026-06-23 16:02] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 100.3477ms
+[2026-06-23 16:02] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 16:02] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 54.0466ms
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - null null
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message=Failed to validate the token.
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message="Bearer" was not authenticated. Failure message: "IDX10517: Signature validation failed. The token's kid is missing. Keys tried: 'Microsoft.IdentityModel.Tokens.SymmetricSecurityKey, KeyId: '', InternalId: 'pi7Ag_sXkp9D_4E6e6OGn0FgvJ2jVc18aghjJEJja04'. , KeyId: 
+'.
+Number of keys in TokenValidationParameters: '1'. 
+Number of keys in Configuration: '0'.
+Exceptions caught:
+ '[PII of type 'System.Text.StringBuilder' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'.
+token: '[PII of type 'Microsoft.IdentityModel.JsonWebTokens.JsonWebToken' is hidden. For more details, see https://aka.ms/IdentityModel/PII.]'. See https://aka.ms/IDX10503 for details."
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Customer)"
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - 401 null "application/json" 247.4699ms
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - null null
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Customer)"
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 16:03] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - 401 null "application/json" 7.62ms
+[2026-06-23 16:04] [INF] UserId= Path=/api/Category Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - null null
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)"'
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Route matched with "{action = \"GetAll\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll()" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed DbCommand ("43"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]"
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[ECommerce.Application.DTOs.CategoryDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)" in 289.8711ms
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)"'
+[2026-06-23 16:04] [INF] UserId= Path=/api/Category Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - 200 null "application/json" 389.3635ms
+[2026-06-23 16:04] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - null null
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Route matched with "{action = \"GetAll\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync()" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]"
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[ECommerce.Application.DTOs.ProductDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)" in 86.7209ms
+[2026-06-23 16:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 16:04] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - 200 null "application/json" 94.8329ms
+[2026-06-23 16:04] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - "application/json" 104
+[2026-06-23 16:04] [INF] UserId= Path=/api/Products Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Seller)"
+[2026-06-23 16:04] [INF] UserId= Path=/api/Products Message=AuthenticationScheme: "Bearer" was forbidden.
+[2026-06-23 16:04] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - 403 null "application/json" 4.1244ms
+[2026-06-23 16:06] [INF] UserId= Path= Message=Executed DbCommand ("71"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:06] [INF] UserId= Path= Message=Executed DbCommand ("6"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:06] [INF] UserId= Path= Message=Executed DbCommand ("4"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:06] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 16:06] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 16:06] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 16:06] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 16:06] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 16:06] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 16:06] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 938.0069ms
+[2026-06-23 16:06] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 16:06] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 16:06] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 22.7051ms
+[2026-06-23 16:06] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 133.0566ms
+[2026-06-23 16:06] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 16:06] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 32.3404ms
+[2026-06-23 16:06] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - null null
+[2026-06-23 16:06] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 16:06] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Route matched with "{action = \"GetAll\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync()" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 16:06] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]"
+[2026-06-23 16:06] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[ECommerce.Application.DTOs.ProductDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 16:06] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)" in 261.497ms
+[2026-06-23 16:06] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 16:06] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - 200 null "application/json" 500.7566ms
+[2026-06-23 16:06] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - "application/json" 103
+[2026-06-23 16:06] [INF] UserId= Path=/api/Products Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Seller)"
+[2026-06-23 16:06] [INF] UserId= Path=/api/Products Message=AuthenticationScheme: "Bearer" was forbidden.
+[2026-06-23 16:06] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - 403 null "application/json" 15.1511ms
+[2026-06-23 16:07] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 16:07] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 27.8682ms
+[2026-06-23 16:07] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 16:07] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 1.2346ms
+[2026-06-23 16:07] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 16:07] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 28.2687ms
+[2026-06-23 16:07] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 16:07] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 70.161ms
+[2026-06-23 16:07] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - "application/json" 106
+[2026-06-23 16:07] [INF] UserId= Path=/api/Products Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Seller)"
+[2026-06-23 16:07] [INF] UserId= Path=/api/Products Message=AuthenticationScheme: "Bearer" was forbidden.
+[2026-06-23 16:07] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - 403 null "application/json" 13.4338ms
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - "application/json" 104
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Seller)"
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=AuthenticationScheme: "Bearer" was forbidden.
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - 403 null "application/json" 1.7068ms
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - "application/json" 104
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Seller)"
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=AuthenticationScheme: "Bearer" was forbidden.
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - 403 null "application/json" 1.0132ms
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - "application/json" 105
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Seller)"
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=AuthenticationScheme: "Bearer" was forbidden.
+[2026-06-23 16:08] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Products""" - 403 null "application/json" 1.1087ms
+[2026-06-23 16:10] [INF] UserId= Path=/api/Products/5 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/5""" - null null
+[2026-06-23 16:10] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/5 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 16:10] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/5 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 16:10] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/5 Message=Executed DbCommand ("5"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 16:10] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/5 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 16:10] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/5 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 103.5119ms
+[2026-06-23 16:10] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/5 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 16:10] [ERR] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/5 Message=Error happened for UserId "c0c501a8-f99d-42fa-927c-db751c0f816c" at "/api/Products/5"
+[2026-06-23 16:10] [INF] UserId= Path=/api/Products/5 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/5""" - 500 null "application/json" 495.7406ms
+[2026-06-23 16:28] [INF] UserId= Path= Message=Executed DbCommand ("62"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:28] [INF] UserId= Path= Message=Executed DbCommand ("10"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:28] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:28] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 16:28] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 16:28] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 16:28] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 16:28] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 16:28] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 16:28] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 774.293ms
+[2026-06-23 16:28] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 16:28] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 16:28] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 9.8555ms
+[2026-06-23 16:28] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 106.0427ms
+[2026-06-23 16:28] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 16:28] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 35.926ms
+[2026-06-23 16:29] [INF] UserId= Path=/api/Products/22 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/22""" - null null
+[2026-06-23 16:29] [INF] UserId= Path=/api/Products/22 Message=Failed to validate the token.
+[2026-06-23 16:29] [INF] UserId= Path=/api/Products/22 Message="Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/23/2026 1:11:39 PM', Current time (UTC): '6/23/2026 1:29:19 PM'."
+[2026-06-23 16:29] [INF] UserId= Path=/api/Products/22 Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Customer)"
+[2026-06-23 16:29] [INF] UserId= Path=/api/Products/22 Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 16:29] [INF] UserId= Path=/api/Products/22 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/22""" - 401 null "application/json" 288.6329ms
+[2026-06-23 16:32] [INF] UserId= Path=/api/Category/1515 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/1515""" - null null
+[2026-06-23 16:32] [INF] UserId= Path=/api/Category/1515 Message=Failed to validate the token.
+[2026-06-23 16:32] [INF] UserId= Path=/api/Category/1515 Message="Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/23/2026 1:11:39 PM', Current time (UTC): '6/23/2026 1:32:50 PM'."
+[2026-06-23 16:32] [INF] UserId= Path=/api/Category/1515 Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Customer)"
+[2026-06-23 16:32] [INF] UserId= Path=/api/Category/1515 Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 16:32] [INF] UserId= Path=/api/Category/1515 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/1515""" - 401 null "application/json" 27.0492ms
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - null null
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=Failed to validate the token.
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message="Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/23/2026 1:11:39 PM', Current time (UTC): '6/23/2026 1:33:17 PM'."
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Customer)"
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - 401 null "application/json" 39.9317ms
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - null null
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=Failed to validate the token.
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message="Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/23/2026 1:11:39 PM', Current time (UTC): '6/23/2026 1:33:38 PM'."
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=Authorization failed. "These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin|Customer)"
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=AuthenticationScheme: "Bearer" was challenged.
+[2026-06-23 16:33] [INF] UserId= Path=/api/Category Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - 401 null "application/json" 8.9694ms
+[2026-06-23 16:33] [INF] UserId= Path=/api/Auz/Login Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - "application/json" 50
+[2026-06-23 16:33] [INF] UserId= Path=/api/Auz/Login Message=Failed to validate the token.
+[2026-06-23 16:33] [INF] UserId= Path=/api/Auz/Login Message="Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/23/2026 1:11:39 PM', Current time (UTC): '6/23/2026 1:33:59 PM'."
+[2026-06-23 16:33] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executing endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-23 16:33] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Route matched with "{action = \"Login\", controller = \"Auz\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ECommerce.Application.DTOs.LoginDto)" on controller "ECommerce.Api.Controllers.AuzController" ("ECommerce.Api").
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed DbCommand ("45"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0"
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executing "UnauthorizedObjectResult", writing value of type '"System.String"'.
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed action "ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)" in 512.4272ms
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-23 16:34] [ERR] UserId=null Path=/api/Auz/Login Message=Error happened for UserId null at "/api/Auz/Login"
+[2026-06-23 16:34] [INF] UserId= Path=/api/Auz/Login Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - 500 null "application/json" 912.954ms
+[2026-06-23 16:34] [INF] UserId= Path=/api/Auz/Login Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - "application/json" 58
+[2026-06-23 16:34] [INF] UserId= Path=/api/Auz/Login Message=Failed to validate the token.
+[2026-06-23 16:34] [INF] UserId= Path=/api/Auz/Login Message="Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '6/23/2026 1:11:39 PM', Current time (UTC): '6/23/2026 1:34:29 PM'."
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executing endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Route matched with "{action = \"Login\", controller = \"Auz\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ECommerce.Application.DTOs.LoginDto)" on controller "ECommerce.Api.Controllers.AuzController" ("ECommerce.Api").
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0"
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed DbCommand ("65"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0"
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.LoginResponseDto"'.
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed action "ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)" in 322.0783ms
+[2026-06-23 16:34] [INF] UserId=Anonymous Path=/api/Auz/Login Message=Executed endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-23 16:34] [INF] UserId= Path=/api/Auz/Login Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - 200 null "application/json" 333.6191ms
+[2026-06-23 16:34] [INF] UserId= Path=/api/Category Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - null null
+[2026-06-23 16:34] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)"'
+[2026-06-23 16:34] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Route matched with "{action = \"GetAll\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll()" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 16:34] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed DbCommand ("34"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]"
+[2026-06-23 16:34] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[ECommerce.Application.DTOs.CategoryDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 16:34] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)" in 202.5704ms
+[2026-06-23 16:34] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)"'
+[2026-06-23 16:34] [INF] UserId= Path=/api/Category Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - 200 null "application/json" 232.5006ms
+[2026-06-23 16:35] [INF] UserId= Path=/api/Category/221 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/221""" - null null
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/221 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/221 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/221 Message=Executed DbCommand ("61"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/221 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/221 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 87.0369ms
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/221 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:35] [ERR] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/221 Message=Error happened for UserId "c0c501a8-f99d-42fa-927c-db751c0f816c" at "/api/Category/221"
+[2026-06-23 16:35] [INF] UserId= Path=/api/Category/221 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/221""" - 500 null "application/json" 297.9074ms
+[2026-06-23 16:35] [INF] UserId= Path=/api/Category/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/2""" - null null
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.CategoryDto"'.
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 25.1289ms
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:35] [INF] UserId= Path=/api/Category/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/2""" - 200 null "application/json" 26.7971ms
+[2026-06-23 16:35] [INF] UserId= Path=/api/Category/1 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/1""" - null null
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.CategoryDto"'.
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 4.7149ms
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:35] [INF] UserId= Path=/api/Category/1 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/1""" - 200 null "application/json" 6.6919ms
+[2026-06-23 16:35] [INF] UserId= Path=/api/Category/50 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/50""" - null null
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/50 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/50 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/50 Message=Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/50 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/50 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 4.3307ms
+[2026-06-23 16:35] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/50 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:35] [ERR] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/50 Message=Error happened for UserId "c0c501a8-f99d-42fa-927c-db751c0f816c" at "/api/Category/50"
+[2026-06-23 16:35] [INF] UserId= Path=/api/Category/50 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/50""" - 500 null "application/json" 184.7973ms
+[2026-06-23 16:40] [INF] UserId= Path= Message=Executed DbCommand ("66"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:40] [INF] UserId= Path= Message=Executed DbCommand ("13"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:40] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 16:40] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 16:40] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 16:40] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 16:40] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 16:40] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 16:40] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 16:40] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 929.6128ms
+[2026-06-23 16:40] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 16:40] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 16:40] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 8.7036ms
+[2026-06-23 16:40] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 116.9163ms
+[2026-06-23 16:40] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 16:40] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 64.0477ms
+[2026-06-23 16:40] [INF] UserId= Path=/api/Category/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/2""" - null null
+[2026-06-23 16:40] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:40] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 16:40] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 16:40] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.CategoryDto"'.
+[2026-06-23 16:40] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 261.5364ms
+[2026-06-23 16:40] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:40] [INF] UserId= Path=/api/Category/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/2""" - 200 null "application/json; charset=utf-8" 577.6175ms
+[2026-06-23 16:41] [INF] UserId= Path=/api/Category/214 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/214""" - null null
+[2026-06-23 16:41] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/214 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:41] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/214 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 16:41] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/214 Message=Executed DbCommand ("5"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 16:41] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/214 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 16:41] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/214 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 45.3913ms
+[2026-06-23 16:41] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/214 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 16:41] [INF] UserId= Path=/api/Category/214 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/214""" - 400 null "text/plain; charset=utf-8" 66.7833ms
+[2026-06-23 16:43] [INF] UserId= Path=/api/Auz/Login Message=Request starting "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - "application/json" 50
+[2026-06-23 16:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Auz/Login Message=Executing endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-23 16:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Auz/Login Message=Route matched with "{action = \"Login\", controller = \"Auz\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(ECommerce.Application.DTOs.LoginDto)" on controller "ECommerce.Api.Controllers.AuzController" ("ECommerce.Api").
+[2026-06-23 16:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Auz/Login Message=Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0"
+[2026-06-23 16:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Auz/Login Message=Executing "UnauthorizedObjectResult", writing value of type '"System.String"'.
+[2026-06-23 16:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Auz/Login Message=Executed action "ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)" in 333.3045ms
+[2026-06-23 16:43] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Auz/Login Message=Executed endpoint '"ECommerce.Api.Controllers.AuzController.Login (ECommerce.Api)"'
+[2026-06-23 16:43] [INF] UserId= Path=/api/Auz/Login Message=Request finished "HTTP/1.1" "POST" "http"://"localhost:5052""""/api/Auz/Login""" - 401 null "text/plain; charset=utf-8" 353.0109ms
+[2026-06-23 17:00] [INF] UserId= Path= Message=Executed DbCommand ("75"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 17:00] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 17:00] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 17:00] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 17:00] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 17:00] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 17:00] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 17:00] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 17:00] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 17:00] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 778.8373ms
+[2026-06-23 17:00] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 17:00] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 17:00] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 10.8104ms
+[2026-06-23 17:00] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 110.0448ms
+[2026-06-23 17:00] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 17:00] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 46.1072ms
+[2026-06-23 17:01] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - null null
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Route matched with "{action = \"GetAll\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync()" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed DbCommand ("52"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]"
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[ECommerce.Application.DTOs.ProductDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)" in 398.6902ms
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 17:01] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - 200 null "application/json; charset=utf-8" 715.0496ms
+[2026-06-23 17:01] [INF] UserId= Path=/api/Products/4 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/4""" - null null
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/4 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/4 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/4 Message=Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/4 Message=Executing "OkObjectResult", writing value of type '"ECommerce.Application.DTOs.ProductDto"'.
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/4 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 96.6375ms
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/4 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 17:01] [INF] UserId= Path=/api/Products/4 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/4""" - 200 null "application/json; charset=utf-8" 119.9947ms
+[2026-06-23 17:01] [INF] UserId= Path=/api/Products/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - null null
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Route matched with "{action = \"GetByid\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetByidAsync(Int32)" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed DbCommand ("5"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[Id] = @__id_0"
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executing "BadRequestObjectResult", writing value of type '"System.String"'.
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)" in 26.5673ms
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products/2 Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetByidAsync (ECommerce.Api)"'
+[2026-06-23 17:01] [INF] UserId= Path=/api/Products/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products/2""" - 400 null "text/plain; charset=utf-8" 34.3389ms
+[2026-06-23 17:01] [INF] UserId= Path=/api/Category/2 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/2""" - null null
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executed DbCommand ("5"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executing "ObjectResult", writing value of type '"ECommerce.Application.Responses.ApiResponse`1[[ECommerce.Application.DTOs.CategoryDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 35.9946ms
+[2026-06-23 17:01] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/2 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:01] [INF] UserId= Path=/api/Category/2 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/2""" - 200 null "application/json; charset=utf-8" 42.983ms
+[2026-06-23 17:02] [INF] UserId= Path=/api/Category/1 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/1""" - null null
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executed DbCommand ("1"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executing "ObjectResult", writing value of type '"ECommerce.Application.Responses.ApiResponse`1[[ECommerce.Application.DTOs.CategoryDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 4.8669ms
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:02] [INF] UserId= Path=/api/Category/1 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/1""" - 200 null "application/json; charset=utf-8" 6.8092ms
+[2026-06-23 17:02] [INF] UserId= Path=/api/Category/15 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/15""" - null null
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executed DbCommand ("2"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executing "ObjectResult", writing value of type '"ECommerce.Application.Responses.ApiResponse`1[[ECommerce.Application.DTOs.CategoryDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 5.633ms
+[2026-06-23 17:02] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:02] [INF] UserId= Path=/api/Category/15 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/15""" - 400 null "application/json; charset=utf-8" 6.9185ms
+[2026-06-23 17:03] [INF] UserId= Path= Message=Executed DbCommand ("61"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 17:03] [INF] UserId= Path= Message=Executed DbCommand ("6"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 17:03] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 17:03] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 17:03] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 17:03] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 17:03] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 17:03] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 17:03] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 17:03] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 847.7937ms
+[2026-06-23 17:03] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 17:03] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 17:03] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 9.6847ms
+[2026-06-23 17:03] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 96.4696ms
+[2026-06-23 17:03] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 17:03] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 39.3737ms
+[2026-06-23 17:04] [INF] UserId= Path=/api/Category Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - null null
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)"'
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Route matched with "{action = \"GetAll\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll()" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]"
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executing "OkObjectResult", writing value of type '"System.Collections.Generic.List`1[[ECommerce.Application.DTOs.CategoryDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)" in 298.9323ms
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetAll (ECommerce.Api)"'
+[2026-06-23 17:04] [INF] UserId= Path=/api/Category Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category""" - 200 null "application/json; charset=utf-8" 536.811ms
+[2026-06-23 17:04] [INF] UserId= Path=/api/Category/4 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/4""" - null null
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/4 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/4 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/4 Message=Executed DbCommand ("3"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/4 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 268.7714ms
+[2026-06-23 17:04] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/4 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:04] [ERR] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/4 Message=Error happened for UserId "c0c501a8-f99d-42fa-927c-db751c0f816c" at "/api/Category/4"
+[2026-06-23 17:04] [INF] UserId= Path=/api/Category/4 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/4""" - 500 null "application/json" 567.9519ms
+[2026-06-23 17:17] [INF] UserId= Path= Message=Executed DbCommand ("109"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 17:17] [INF] UserId= Path= Message=Executed DbCommand ("11"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 17:17] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-23 17:17] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-23 17:17] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-23 17:17] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-23 17:17] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-23 17:17] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-23 17:17] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-23 17:17] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 926.9877ms
+[2026-06-23 17:17] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-23 17:17] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-23 17:17] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 5.9408ms
+[2026-06-23 17:17] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 202.4497ms
+[2026-06-23 17:17] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-23 17:17] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 81.3214ms
+[2026-06-23 17:18] [INF] UserId= Path=/api/Category/1 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/1""" - null null
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executed DbCommand ("4"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executing "ObjectResult", writing value of type '"ECommerce.Application.Responses.ApiResponse`1[[ECommerce.Application.DTOs.CategoryDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 291.2942ms
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/1 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:18] [INF] UserId= Path=/api/Category/1 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/1""" - 200 null "application/json; charset=utf-8" 582.6965ms
+[2026-06-23 17:18] [INF] UserId= Path=/api/Category/15 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/15""" - null null
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executing endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Route matched with "{action = \"GetById\", controller = \"Category\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetById(Int32)" on controller "ECommerce.Api.Controllers.CategoryController" ("ECommerce.Api").
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executed DbCommand ("2"ms) [Parameters=["@__id_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [c].[Id], [c].[Description], [c].[Name]
+FROM [Categories] AS [c]
+WHERE [c].[Id] = @__id_0"
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executing "ObjectResult", writing value of type '"ECommerce.Application.Responses.ApiResponse`1[[ECommerce.Application.DTOs.CategoryDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executed action "ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)" in 48.424ms
+[2026-06-23 17:18] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Category/15 Message=Executed endpoint '"ECommerce.Api.Controllers.CategoryController.GetById (ECommerce.Api)"'
+[2026-06-23 17:18] [INF] UserId= Path=/api/Category/15 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Category/15""" - 400 null "application/json; charset=utf-8" 56.9303ms
+[2026-06-23 17:19] [INF] UserId= Path=/api/Orders/1 Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Orders/1""" - null null
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders/1 Message=Executing endpoint '"ECommerce.Api.Controllers.OrdersController.GetOrder (ECommerce.Api)"'
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders/1 Message=Route matched with "{action = \"GetOrder\", controller = \"Orders\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrder(Int32)" on controller "ECommerce.Api.Controllers.OrdersController" ("ECommerce.Api").
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders/1 Message=Executed DbCommand ("499"ms) [Parameters=["@__orderid_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[Id], [t].[CreatedAt], [t].[ShippingAddress], [t].[Status], [t].[TotalPrice], [t].[UserId], [t0].[Id], [t0].[OrderId], [t0].[ProductId], [t0].[Quantity], [t0].[UnitPrice], [t0].[Id0], [t0].[CategoryId], [t0].[Description], [t0].[ImageUrl], [t0].[Name], [t0].[Price], [t0].[SellerId], [t0].[Status], [t0].[StockQuantity]
+FROM (
+    SELECT TOP(1) [o].[Id], [o].[CreatedAt], [o].[ShippingAddress], [o].[Status], [o].[TotalPrice], [o].[UserId]
+    FROM [Orders] AS [o]
+    WHERE [o].[Id] = @__orderid_0
+) AS [t]
+LEFT JOIN (
+    SELECT [o0].[Id], [o0].[OrderId], [o0].[ProductId], [o0].[Quantity], [o0].[UnitPrice], [p].[Id] AS [Id0], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+    FROM [OrderItems] AS [o0]
+    INNER JOIN [Products] AS [p] ON [o0].[ProductId] = [p].[Id]
+) AS [t0] ON [t].[Id] = [t0].[OrderId]
+ORDER BY [t].[Id], [t0].[Id]"
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders/1 Message=Executing "ObjectResult", writing value of type '"ECommerce.Application.Responses.ApiResponse`1[[ECommerce.Domain.Domain_Models.Order, ECommerce.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'.
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders/1 Message=Executed action "ECommerce.Api.Controllers.OrdersController.GetOrder (ECommerce.Api)" in 694.9297ms
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders/1 Message=Executed endpoint '"ECommerce.Api.Controllers.OrdersController.GetOrder (ECommerce.Api)"'
+[2026-06-23 17:19] [INF] UserId= Path=/api/Orders/1 Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Orders/1""" - 404 null "application/json; charset=utf-8" 708.7122ms
+[2026-06-23 17:19] [INF] UserId= Path=/api/Orders Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Orders""" - null null
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders Message=Executing endpoint '"ECommerce.Api.Controllers.OrdersController.GetOrders (ECommerce.Api)"'
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders Message=Route matched with "{action = \"GetOrders\", controller = \"Orders\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrders()" on controller "ECommerce.Api.Controllers.OrdersController" ("ECommerce.Api").
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders Message=Executed DbCommand ("31"ms) [Parameters=["@__userId_0='?' (Size = 450)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [o].[Id], [o].[CreatedAt], [o].[ShippingAddress], [o].[Status], [o].[TotalPrice], [o].[UserId], [t].[Id], [t].[OrderId], [t].[ProductId], [t].[Quantity], [t].[UnitPrice], [t].[Id0], [t].[CategoryId], [t].[Description], [t].[ImageUrl], [t].[Name], [t].[Price], [t].[SellerId], [t].[Status], [t].[StockQuantity]
+FROM [Orders] AS [o]
+LEFT JOIN (
+    SELECT [o0].[Id], [o0].[OrderId], [o0].[ProductId], [o0].[Quantity], [o0].[UnitPrice], [p].[Id] AS [Id0], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+    FROM [OrderItems] AS [o0]
+    INNER JOIN [Products] AS [p] ON [o0].[ProductId] = [p].[Id]
+) AS [t] ON [o].[Id] = [t].[OrderId]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[Id], [t].[Id]"
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders Message=Executing "ObjectResult", writing value of type '"ECommerce.Application.Responses.ApiResponse`1[[System.Collections.Generic.List`1[[ECommerce.Application.DTOs.OrderDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'.
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders Message=Executed action "ECommerce.Api.Controllers.OrdersController.GetOrders (ECommerce.Api)" in 71.827ms
+[2026-06-23 17:19] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Orders Message=Executed endpoint '"ECommerce.Api.Controllers.OrdersController.GetOrders (ECommerce.Api)"'
+[2026-06-23 17:19] [INF] UserId= Path=/api/Orders Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Orders""" - 200 null "application/json; charset=utf-8" 87.2552ms
+[2026-06-23 17:20] [INF] UserId= Path=/api/Products Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - null null
+[2026-06-23 17:20] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 17:20] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Route matched with "{action = \"GetAll\", controller = \"Products\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllAsync()" on controller "ECommerce.Api.Controllers.ProductsController" ("ECommerce.Api").
+[2026-06-23 17:20] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed DbCommand ("35"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [p].[Id], [p].[CategoryId], [p].[Description], [p].[ImageUrl], [p].[Name], [p].[Price], [p].[SellerId], [p].[Status], [p].[StockQuantity]
+FROM [Products] AS [p]"
+[2026-06-23 17:20] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executing "ObjectResult", writing value of type '"ECommerce.Application.Responses.ApiResponse`1[[System.Collections.Generic.IEnumerable`1[[ECommerce.Application.DTOs.ProductDto, ECommerce.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"'.
+[2026-06-23 17:20] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed action "ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)" in 135.5237ms
+[2026-06-23 17:20] [INF] UserId=c0c501a8-f99d-42fa-927c-db751c0f816c Path=/api/Products Message=Executed endpoint '"ECommerce.Api.Controllers.ProductsController.GetAllAsync (ECommerce.Api)"'
+[2026-06-23 17:20] [INF] UserId= Path=/api/Products Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/api/Products""" - 200 null "application/json; charset=utf-8" 147.9402ms

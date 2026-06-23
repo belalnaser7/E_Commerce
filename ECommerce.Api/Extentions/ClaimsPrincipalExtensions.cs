@@ -27,28 +27,33 @@ namespace ECommerce.Api.Extentions
     {
         public static IActionResult ToActionResult<T>(this Result<T> result)
         {
-            return result.ErrorType switch
-            {
-                ErrorType.NotFound => new NotFoundObjectResult(result.ErrorMessage),
-                ErrorType.Conflict => new ConflictObjectResult(result.ErrorMessage),
-                ErrorType.BadRequest => new BadRequestObjectResult(result.ErrorMessage),
-                ErrorType.Unauthorized => new UnauthorizedObjectResult(result.ErrorMessage),
+            var response = result.ToApiResponse();
 
-                _ => new OkObjectResult(result.Data)
+            return new ObjectResult(response)
+            {
+                StatusCode = response.StatusCode
             };
         }
-
         public static IActionResult ToActionResult(this Result result)
         {
-            return result.ErrorType switch
-            {
-                ErrorType.NotFound => new NotFoundObjectResult(result.ErrorMessage),
-                ErrorType.Conflict => new ConflictObjectResult(result.ErrorMessage),
-                ErrorType.BadRequest => new BadRequestObjectResult(result.ErrorMessage),
-                ErrorType.Unauthorized => new UnauthorizedObjectResult(result.ErrorMessage),
+            var response = result.ToApiResponse();
 
-                _ => new OkResult()
+            return new ObjectResult(response)
+            {
+                StatusCode = response.StatusCode
             };
         }
+        //public static IActionResult ToActionResult(this Result result)
+        //{
+        //    return result.ErrorType switch
+        //    {
+        //        ErrorType.NotFound => new NotFoundObjectResult(result.ErrorMessage),
+        //        ErrorType.Conflict => new ConflictObjectResult(result.ErrorMessage),
+        //        ErrorType.BadRequest => new BadRequestObjectResult(result.ErrorMessage),
+        //        ErrorType.Unauthorized => new UnauthorizedObjectResult(result.ErrorMessage),
+
+        //        _ => new OkResult()
+        //    };
+        //}
     }
 }

@@ -18,8 +18,8 @@ namespace ECommerce.Api.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> register(RegisterDto dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState);
 
             var result=await servicesRegister.Register(dto);
             return result.ToActionResult();
@@ -27,10 +27,10 @@ namespace ECommerce.Api.Controllers
         [HttpPost("Login")]
         public async Task<IActionResult> Login(LoginDto login)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
             var result = await servicesRegister.Login(login);
 
             return result.ToActionResult();

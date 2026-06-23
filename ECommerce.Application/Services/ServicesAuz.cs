@@ -76,12 +76,13 @@ namespace ECommerce.Application.Services
         public async Task<Result<LoginResponseDto?>> Login(LoginDto login)
         {
             var user = await userManager.FindByNameAsync(login.UserName);
-            var checkpass = await userManager.CheckPasswordAsync(user, login.PassWord);
-            if (user is null || !checkpass)
+
+            if (user is null ||
+                !await userManager.CheckPasswordAsync(user, login.PassWord))
             {
                 return Result<LoginResponseDto?>.Fail(
                     "Invalid username or password",
-                      ErrorType.Unauthorized);
+                    ErrorType.Unauthorized);
             }
             // هنعمل الكلايمز
             List<Claim> claims = new List<Claim>
@@ -102,7 +103,7 @@ namespace ECommerce.Application.Services
                 claims.Add(new Claim(ClaimTypes.Role, item));
             }
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Config["Jwt:Key"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Config["Jwt:Key"] ?? "KEY NULL"));
             // هروحج اعمل ال Key الي symmitricSecurtykey
 
             // هنعمل ال singingCredentials

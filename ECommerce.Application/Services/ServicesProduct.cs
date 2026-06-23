@@ -8,12 +8,12 @@ namespace ECommerce.Application.Services
 {
     public class ServicesProduct : IServicesProduct
     {
-        private readonly IRepositoryProduct product;
+       
         private readonly IUnitOfWork unitOfWork;
 
-        public ServicesProduct(IRepositoryProduct product,IUnitOfWork unitOfWork)
+        public ServicesProduct(IUnitOfWork unitOfWork)
         {
-            this.product = product;
+            
             this.unitOfWork = unitOfWork;
         }
 
@@ -29,24 +29,24 @@ namespace ECommerce.Application.Services
             //    return Result.Fail("The Product Quantity isn't Valid");
             var pro = dto.Adapt<Product>();
             pro.SellerId = Sellerid;
-           await product.AddAsync(pro);
+           await unitOfWork.Products.AddAsync(pro);
            await unitOfWork.SaveAsync();
             return Result.Success();
         }
 
         public async Task<Result> DelAsync(int id)
         {
-            var product1 =await product.GetByIdAsync(id);
+            var product1 =await unitOfWork.Products.GetByIdAsync(id);
             if (product1 is null)
                 return Result.Fail("The Product isn't Exsit");
-            product.Del(product1);
+            unitOfWork.Products.Del(product1);
            await unitOfWork.SaveAsync();
             return Result.Success();
         }
 
         public async Task<Result<IEnumerable<ProductDto>>> GetAllAsync()
         {
-            var products =await product.GetAllAsync();
+            var products =await unitOfWork.Products.GetAllAsync();
             var dto = products.Adapt<List<ProductDto>>();
 
             return Result<IEnumerable<ProductDto>>.Success(dto);
@@ -54,7 +54,7 @@ namespace ECommerce.Application.Services
 
         public async Task<Result<ProductDto?>> GetByIdAsync(int id)
         {
-            var product1 =await product.GetByIdAsync(id);
+            var product1 =await unitOfWork.Products.GetByIdAsync(id);
             if (product1 is null)
                 return Result<ProductDto?>.Fail("The Product isn't Exsit");
             var dto = product1.Adapt<ProductDto>();
@@ -63,7 +63,7 @@ namespace ECommerce.Application.Services
 
         public async Task<Result<Product?>> GetEntityByIdAsync(int id) // helper
         {
-            var product1 =await product.GetByIdAsync(id);
+            var product1 =await unitOfWork.Products.GetByIdAsync(id);
             if (product1 is null)
                 return Result<Product?>.Fail("The Product isn't Exsit",ErrorType.NotFound);
             return Result<Product?>.Success(product1);
