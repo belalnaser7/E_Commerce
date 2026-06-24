@@ -1,5 +1,6 @@
 ﻿using ECommerce.Application.Responses;
 using ECommerce.Application.Result_pattern;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Api.Extentions
 {
@@ -31,7 +32,7 @@ namespace ECommerce.Api.Extentions
         {
             return errorType switch
             {
-                ErrorType.NotFound => 404,
+                ErrorType.NotFound => new NotFoundObjectResult(result.ErrorMessage),
                 ErrorType.BadRequest => 400,
                 ErrorType.Unauthorized => 401,
                 ErrorType.Conflict => 409,

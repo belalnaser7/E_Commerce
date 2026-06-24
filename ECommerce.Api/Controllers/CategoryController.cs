@@ -44,10 +44,10 @@ public class CategoryController : ControllerBase
         var result = await _categoryService.GetByIdAsync(id);
         //throw new Exception();
 
-        var response = result.ToApiResponse();
-        return StatusCode(response.StatusCode, response);
+        //var response = result.ToApiResponse();
+        //return StatusCode(response.StatusCode, response);
 
-       // return result.ToActionResult();
+        return result.ToActionResult();
     }
 
     [Authorize(Roles = "Admin")]
