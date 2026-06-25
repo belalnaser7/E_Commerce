@@ -7,21 +7,31 @@ namespace ECommerce.Application.Services
 {
     public class ServicesCart : IServicesCart
     {
-        
-        private readonly IUnitOfWork unitOfWork;
 
-        public ServicesCart(IUnitOfWork unitOfWork)
+        private readonly IUnitOfWork unitOfWork;
+        private readonly ICacheService cacheService;
+
+        public ServicesCart(IUnitOfWork unitOfWork, ICacheService cacheService)
         {
-            
             this.unitOfWork = unitOfWork;
+            this.cacheService = cacheService;
         }
         public async Task<Result<Cart?>> GetByUserIdAsync(string userId) // helper
         {
-            var cart = await unitOfWork.Carts.GetByUserIdAsync(userId);
+            string key = $"Cart:{userId}";
+            var cart = cacheService.Get<Cart>(key);
             if (cart is null)
             {
-                return Result<Cart?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
+                var cart1 = await unitOfWork.Carts.GetByUserIdAsync(userId);
+                if (cart1 is null)
+                {
+                    return Result<Cart?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
+                }
+                cacheService.Set(key, TimeSpan.FromHours(2), cart1);
+                cart = cart1;
+
             }
+
             return Result<Cart?>.Success(cart);
         }
 
@@ -40,13 +50,13 @@ namespace ECommerce.Application.Services
 
             if (!cartResult.IsSuccess)
             {
-               
+
                 cart = new Cart()
                 {
                     UserId = userId
                 };
 
-               await unitOfWork.Carts.AddAsync(cart);
+                await unitOfWork.Carts.AddAsync(cart);
             }
             else
             {
@@ -67,13 +77,14 @@ namespace ECommerce.Application.Services
                 });
             }
             await unitOfWork.SaveAsync();
-
+            cacheService.Remove($"CartItems:{userId}");
+            cacheService.Remove($"Cart:{userId}");
             return Result.Success();
         }
 
         public async Task<Result> ClearCartAsync(string userId)
         {
-            var cart =await GetByUserIdAsync(userId);
+            var cart = await GetByUserIdAsync(userId);
             if (!cart.IsSuccess)
             {
                 return cart;
@@ -82,48 +93,56 @@ namespace ECommerce.Application.Services
             cart.Data.Items.Clear();
 
             await unitOfWork.SaveAsync();
+            cacheService.Remove($"CartItems:{userId}");
+            cacheService.Remove($"Cart:{userId}");
             return Result.Success();
         }
 
         public async Task<Result<CartDto?>> GetCartAsync(string userId)
         {
-            var cart =await GetByUserIdAsync(userId);
-            if (!cart.IsSuccess)
+            string key = $"CartItems:{userId}";
+            var cartDto = cacheService.Get<CartDto?>(key);
+            if (cartDto is null)
             {
-                return Result<CartDto?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
+                var cart = await GetByUserIdAsync(userId);
+                if (!cart.IsSuccess)
+                {
+                    return Result<CartDto?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
+                }
+                var listCartItems = cart.Data.Items.Select(i => new CartItemDto
+                {
+                    ProductId = i.ProductId,
+                    ProductName = i.Product.Name,
+                    Price = i.Product.Price,
+                    Quantity = i.Quantity
+                }).ToList();
+                cartDto = new CartDto
+                {
+                    Items = listCartItems
+                };
+                cacheService.Set(key, TimeSpan.FromHours(2), cartDto);
+               
             }
 
-            //var o = cart.Data.Items.Select(i => new CartItemDto
-            //{
-            //    ProductId = i.ProductId,
-            //    ProductName = i.Product.Name,
-            //    Price = i.Product.Price,
-            //    Quantity = i.Quantity
-            //}).ToList();
+            return Result<CartDto?>.Success(cartDto);
 
-            //var jj = new CartDto
-            //{
-            //    Items = o
-            //};
-            //return Result<CartDto?>.Success(jj);
-
-            return Result<CartDto?>.Success(
-                new CartDto
-                {
-                    Items = cart.Data.Items.Select(i => new CartItemDto
-                    {
-                        ProductId = i.ProductId,
-                        ProductName = i.Product.Name,
-                        Price = i.Product.Price,
-                        Quantity = i.Quantity
-                    }).ToList()
-                });
+            //return Result<CartDto?>.Success(
+            //    new CartDto
+            //    {
+            //        Items = cart.Data.Items.Select(i => new CartItemDto
+            //        {
+            //            ProductId = i.ProductId,
+            //            ProductName = i.Product.Name,
+            //            Price = i.Product.Price,
+            //            Quantity = i.Quantity
+            //        }).ToList()
+            //    });
 
         }
 
         public async Task<Result> RemoveItemAsync(string userId, int cartitemid)
         {
-            var cart =await GetByUserIdAsync(userId);
+            var cart = await GetByUserIdAsync(userId);
             if (!cart.IsSuccess)
             {
                 return cart;
@@ -137,6 +156,8 @@ namespace ECommerce.Application.Services
 
             unitOfWork.Carts.Remove(existingItem);
             await unitOfWork.SaveAsync();
+            cacheService.Remove($"CartItems:{userId}");
+            cacheService.Remove($"Cart:{userId}");
             return Result.Success();
 
         }
@@ -145,7 +166,7 @@ namespace ECommerce.Application.Services
         {
             //if (dto.Quantity <= 0)
             //    return Result.Fail("The Product Quantity Invalid");
-            var cart =await GetByUserIdAsync(userId);
+            var cart = await GetByUserIdAsync(userId);
             if (!cart.IsSuccess)
             {
                 return cart;
@@ -158,6 +179,8 @@ namespace ECommerce.Application.Services
             }
             existingItem.Quantity = dto.Quantity;
             await unitOfWork.SaveAsync();
+            cacheService.Remove($"CartItems:{userId}");
+            cacheService.Remove($"Cart:{userId}");
             return Result.Success();
 
         }

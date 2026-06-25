@@ -8,19 +8,17 @@ namespace ECommerce.Application.Services
 {
     public class ServicesCategory : IServicesCategory
     {
-        
-        private readonly IUnitOfWork unitOfWork;
 
-        public ServicesCategory(IUnitOfWork unitOfWork)
-        { 
+        private readonly IUnitOfWork unitOfWork;
+        private readonly ICacheService cacheService;
+
+        public ServicesCategory(IUnitOfWork unitOfWork, ICacheService cacheService)
+        {
             this.unitOfWork = unitOfWork;
+            this.cacheService = cacheService;
         }
         public async Task<Result> AddAsync(CreateCategoryDto dto)
         {
-            //if (string.IsNullOrWhiteSpace(dto.Name))
-            //{
-            //    return Result.Fail("The Name is Empty");
-            //}
 
             if (await unitOfWork.Categorys.IsExistAsync(dto.Name))
             {
@@ -30,6 +28,7 @@ namespace ECommerce.Application.Services
             var categoryEntity = dto.Adapt<Category>();
             await unitOfWork.Categorys.AddAsync(categoryEntity);
             await unitOfWork.SaveAsync();
+            cacheService.Remove("Categories");
             return Result.Success();
         }
         public async Task<Result> DelAsync(int id)
@@ -39,29 +38,43 @@ namespace ECommerce.Application.Services
                 return Result.Fail("This Category isn't Exsit");
             unitOfWork.Categorys.Del(category1);
             await unitOfWork.SaveAsync();
+            cacheService.Remove($"Category:{id}");
+            cacheService.Remove("Categories");
             return Result.Success();
         }
 
+
         public async Task<Result<IEnumerable<CategoryDto>>> GetAllAsync()
         {
-            var Categories = await unitOfWork.Categorys.GetAllAsync();
-
-            var dto = Categories.Adapt<List<CategoryDto>>();
-
-            return Result<IEnumerable<CategoryDto>>.Success(dto);
+            string key = "Categories";
+            var CategoriesDto = cacheService.Get<IEnumerable<CategoryDto>>(key);
+            if (CategoriesDto is null)
+            {
+                Console.WriteLine("CACHE MISS");
+                var CategoriesFromDatebase = await unitOfWork.Categorys.GetAllAsync();
+                CategoriesDto = CategoriesFromDatebase.Adapt<List<CategoryDto>>();
+                cacheService.Set(key, TimeSpan.FromHours(1), CategoriesDto);
+            }
+            Console.WriteLine("CACHE HIT");
+            return Result<IEnumerable<CategoryDto>>.Success(CategoriesDto);
         }
 
         public async Task<Result<CategoryDto?>> GetByIdAsync(int id)
         {
-            var categoryEntity = await unitOfWork.Categorys.GetByIdAsync(id);
-            if (categoryEntity is null)
+            string key = $"Category:{id}";
+            var categoryDto = cacheService.Get<CategoryDto>(key);
+            if (categoryDto is null)
             {
-                return Result<CategoryDto?>.Fail("This Category isn't Exsit");
+                var categoryEntity = await unitOfWork.Categorys.GetByIdAsync(id);
+                if (categoryEntity is null)
+                {
+                    return Result<CategoryDto?>.Fail("This Category isn't Exsit");
+                }
+                categoryDto = categoryEntity.Adapt<CategoryDto>();
+                cacheService.Set(key, TimeSpan.FromHours(1), categoryDto);
             }
 
-            var dto = categoryEntity.Adapt<CategoryDto>();
-
-            return Result<CategoryDto?>.Success(dto);
+            return Result<CategoryDto?>.Success(categoryDto);
         }
 
         public async Task<Result> UpdateAsync(int id, UpdateCategotyDto dto)
@@ -71,6 +84,8 @@ namespace ECommerce.Application.Services
                 return Result.Fail("This Category isn't Exsit");
             dto.Adapt(category2);
             await unitOfWork.SaveAsync();
+            cacheService.Remove($"Category:{id}");
+            cacheService.Remove("Categories");
             return Result.Success();
 
         }

@@ -5,6 +5,7 @@ using ECommerce.Application.Police;
 using ECommerce.Application.Services;
 using ECommerce.Application.Validators;
 using ECommerce.Domain.Domain_Models;
+using ECommerce.Infrastructure.Cache;
 using ECommerce.Infrastructure.Data;
 using ECommerce.Infrastructure.Repositories;
 using ECommerce.Infrastructure.UnitOfWork;
@@ -23,6 +24,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IRepositoryProduct, RepositoryProduct>();
 builder.Services.AddScoped<IServicesProduct, ServicesProduct>();
@@ -38,6 +40,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAuthorizationHandler, CanDeleteOrUpdateProductHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, CanViewCartHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, AccessUserOnHisOrderHandler>();
+builder.Services.AddScoped<ICacheService, CacheService>();
 
 //Auto fluentValidation
 

@@ -32,7 +32,7 @@ namespace ECommerce.Api.Extentions
         {
             return errorType switch
             {
-                ErrorType.NotFound => new NotFoundObjectResult(result.ErrorMessage),
+                ErrorType.NotFound => 404,
                 ErrorType.BadRequest => 400,
                 ErrorType.Unauthorized => 401,
                 ErrorType.Conflict => 409,

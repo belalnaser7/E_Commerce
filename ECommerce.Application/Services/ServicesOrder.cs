@@ -9,28 +9,45 @@ namespace ECommerce.Application.Services
     {
       
         private readonly IUnitOfWork unitOfWork;
+        private readonly ICacheService cacheService;
 
-        public ServicesOrder(IUnitOfWork unitOfWork)
+        public ServicesOrder(IUnitOfWork unitOfWork,ICacheService cacheService)
         {
            
             this.unitOfWork = unitOfWork;
+            this.cacheService = cacheService;
         }
         public async Task<Result<Cart?>> GetCartByUserIdAsync(string userId) // helper
         {
-            var cart =await unitOfWork.Carts.GetByUserIdAsync(userId);
+            string key = $"Cart:{userId}";
+            var cart = cacheService.Get<Cart?>(key);
             if (cart is null)
             {
-                return Result<Cart?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
+                var cart1 = await unitOfWork.Carts.GetByUserIdAsync(userId);
+                if (cart1 is null)
+                {
+                    return Result<Cart?>.Fail("The Cart isn't Exsit", ErrorType.NotFound);
+                }
+                cacheService.Set(key, TimeSpan.FromMinutes(20), cart1);
+                cart = cart1;
             }
             return Result<Cart?>.Success(cart);
         }
         public async Task<Result<Order?>> GetEntityByIdAsync(int orderId) // helper
         {
-            var order =await unitOfWork.Orders.GetByIdAsync(orderId);
-            if (order is null)
+            string key = $"order:{orderId}";
+            var order = cacheService.Get<Order?>(key);
+            if (order is null )
             {
-                return Result<Order?>.Fail("The Order isn't Exsit", ErrorType.NotFound);
+                var order1 = await unitOfWork.Orders.GetByIdAsync(orderId);
+                if (order1 is null)
+                {
+                    return Result<Order?>.Fail("The Order isn't Exsit", ErrorType.NotFound);
+                }
+                cacheService.Set(key, TimeSpan.FromMinutes(20), order1);
+                order = order1;
             }
+            
             return Result<Order?>.Success(order);
         }
         public async Task<Result> CheckoutAsync(string userId, CheckOutDto dto)
@@ -90,6 +107,17 @@ namespace ECommerce.Application.Services
                 cart.Items.Clear();
                 await unitOfWork.SaveAsync();
                 await unitOfWork.CommitAsync();
+                cacheService.Remove($"orders:{userId}");
+                cacheService.Remove($"Cart:{userId}");
+                cacheService.Remove($"CartItems:{userId}");
+                cacheService.Remove("Products");
+
+                foreach (var item in order.Items)
+                {
+                    cacheService.Remove($"Product:{item.ProductId}");
+                    cacheService.Remove($"productEntity:{item.ProductId}");
+                    cacheService.Remove($"orderItems:{item.OrderId}");
+                }
                 return Result.Success();
             }
             catch 
@@ -101,45 +129,82 @@ namespace ECommerce.Application.Services
         }
         public async Task<Result<OrderDto?>> GetOrderByIdAsync(int orderId)
         {
-            var order = await unitOfWork.Orders.GetByIdAsync(orderId);
-            if (order is null)
+            string key = $"orderItems:{orderId}";
+            var orderDto = cacheService.Get<OrderDto?>(key);
+            if (orderDto is null)
             {
-                return Result<OrderDto?>.Fail(
-                    "The Order isn't Exsit",
-                    ErrorType.NotFound);
-            }
-
-            return Result<OrderDto?>.Success(
-                new OrderDto()
+                var order = await unitOfWork.Orders.GetByIdAsync(orderId);
+                if (order is null)
+                {
+                    return Result<OrderDto?>.Fail(
+                        "The Order isn't Exsit",
+                        ErrorType.NotFound);
+                }
+                var orderItems = order.Items.Select(i => new OrderItemDto
+                {
+                    ProductName = i.Product.Name,
+                    UnitPrice = i.UnitPrice,
+                    Quantity = i.Quantity
+                }).ToList();
+                orderDto = new OrderDto()
                 {
                     IdOrder = orderId,
                     ProductCount = order.Items.Count(),
                     TotalPrice = order.TotalPrice,
                     CreatedAt = order.CreatedAt,
-                    Items = order.Items.Select(i => new OrderItemDto
-                    {
-                        ProductName = i.Product.Name,
-                        UnitPrice = i.UnitPrice,
-                        Quantity = i.Quantity
-                    }).ToList()
+                    Items = orderItems
+                };
+                cacheService.Set(key, TimeSpan.FromMinutes(20), orderDto);
+            }
+            return Result<OrderDto?>.Success(orderDto);
 
-                });
+            //return Result<OrderDto?>.Success(
+            //    new OrderDto()
+            //    {
+            //        IdOrder = orderId,
+            //        ProductCount = order.Items.Count(),
+            //        TotalPrice = order.TotalPrice,
+            //        CreatedAt = order.CreatedAt,
+            //        Items = order.Items.Select(i => new OrderItemDto
+            //        {
+            //            ProductName = i.Product.Name,
+            //            UnitPrice = i.UnitPrice,
+            //            Quantity = i.Quantity
+            //        }).ToList()
+
+            //    });
 
         }
 
         public async Task<Result<List<OrderDto>>> GetOrdersAsync(string userId)
         {
-            var order = await unitOfWork.Orders.GetByUserIdAsync(userId);
 
-
-            return Result<List<OrderDto>>.Success(
-                order.Select(i => new OrderDto()
+            string key = $"orders:{userId}";
+            var orderDto = cacheService.Get<List<OrderDto>>(key);
+            if (orderDto is null)
+            {
+                var order = await unitOfWork.Orders.GetByUserIdAsync(userId);
+                orderDto = order.Select(i => new OrderDto()
                 {
                     IdOrder = i.Id,
                     ProductCount = i.Items.Count,
                     TotalPrice = i.TotalPrice,
                     CreatedAt = i.CreatedAt,
-                }).ToList());
+                }).ToList();
+                cacheService.Set(key, TimeSpan.FromMinutes(20), orderDto);
+
+            }
+            return Result<List<OrderDto>>.Success(orderDto);
+
+
+            //return Result<List<OrderDto>>.Success(
+            //    order.Select(i => new OrderDto()
+            //    {
+            //        IdOrder = i.Id,
+            //        ProductCount = i.Items.Count,
+            //        TotalPrice = i.TotalPrice,
+            //        CreatedAt = i.CreatedAt,
+            //    }).ToList());
 
         }
     }

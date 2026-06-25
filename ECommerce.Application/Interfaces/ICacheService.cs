@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Application.Interfaces
 {
-    internal class ICacheService
+    public interface ICacheService
     {
+        T? Get<T>(string key) where T : class;
+        void Set<T>(string key, TimeSpan Expiration, T Data);
+        void Remove(string key);
+
+
     }
 }
