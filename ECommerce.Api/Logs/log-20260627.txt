@@ -1,0 +1,25 @@
+[2026-06-27 00:42] [INF] UserId= Path= Message=Executed DbCommand ("9,371"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-27 00:42] [INF] UserId= Path= Message=Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-27 00:42] [INF] UserId= Path= Message=Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0"
+[2026-06-27 00:42] [INF] UserId= Path= Message=User profile is available. Using '"C:\Users\DELL\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+[2026-06-27 00:42] [INF] UserId= Path= Message=Now listening on: "http://localhost:5052"
+[2026-06-27 00:42] [INF] UserId= Path= Message=Application started. Press Ctrl+C to shut down.
+[2026-06-27 00:42] [INF] UserId= Path= Message=Hosting environment: "Development"
+[2026-06-27 00:42] [INF] UserId= Path= Message=Content root path: "C:\Users\DELL\Desktop\Ecommerce Project\ECommerce\ECommerce.Api"
+[2026-06-27 00:43] [INF] UserId= Path=/swagger/index.html Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - null null
+[2026-06-27 00:43] [INF] UserId= Path=/swagger/index.html Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/index.html""" - 200 null "text/html;charset=utf-8" 1487.0583ms
+[2026-06-27 00:43] [INF] UserId= Path=/_vs/browserLink Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - null null
+[2026-06-27 00:43] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - null null
+[2026-06-27 00:43] [INF] UserId= Path=/_framework/aspnetcore-browser-refresh.js Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_framework/aspnetcore-browser-refresh.js""" - 200 14931 "application/javascript; charset=utf-8" 5.7901ms
+[2026-06-27 00:43] [INF] UserId= Path=/_vs/browserLink Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/_vs/browserLink""" - 200 null "text/javascript; charset=UTF-8" 3240.6176ms
+[2026-06-27 00:43] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request starting "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - null null
+[2026-06-27 00:43] [INF] UserId= Path=/swagger/v1/swagger.json Message=Request finished "HTTP/1.1" "GET" "http"://"localhost:5052""""/swagger/v1/swagger.json""" - 200 null "application/json;charset=utf-8" 22.5649ms

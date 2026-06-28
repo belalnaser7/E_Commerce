@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Serilog;
+using StackExchange.Redis;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<IConnectionMultiplexer>(o =>
+{
+    return ConnectionMultiplexer.Connect("localhost:6379");
+    
+});
 
 builder.Services.AddScoped<IRepositoryProduct, RepositoryProduct>();
 builder.Services.AddScoped<IServicesProduct, ServicesProduct>();
