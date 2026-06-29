@@ -13,8 +13,9 @@ namespace ECommerce.Application.Interfaces
         Task AddAsync(Product dto);
         void Del(Product product);
 
-        Task<IEnumerable<Product>> GetAllAsync();
-        //public bool Update(int id, Product product);
+        Task<IEnumerable<Product>> GetByStatusAsync(ProductStatus productStatus);
+        Task<IEnumerable<Product>> GetBySellerIdAsync(string sellerId);
+        Task<Product?> GetByStatusIdAsync(int id, ProductStatus productStatus);
         Task<Product?> GetByIdAsync(int id);
        
     }

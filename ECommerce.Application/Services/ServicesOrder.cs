@@ -61,14 +61,11 @@ namespace ECommerce.Application.Services
                     await unitOfWork.RollbackAsync();
                     return Result.Fail("The cart isn't Exsit or Empty", ErrorType.NotFound);
                 }
-                //if (string.IsNullOrWhiteSpace(dto.ShippingAddress))
-                //{
-                //    return Result.Fail("The Address isn't Exsit", ErrorType.NotFound);
-                //}
+              
                 var products = new Dictionary<int, Product>();
                 foreach (var item in cart.Items)
                 {
-                    var product = await unitOfWork.Products.GetByIdAsync(item.ProductId);
+                    var product = await unitOfWork.Products.GetByStatusIdAsync(item.ProductId,ProductStatus.Approved);
 
                     if (product is null)
                     {

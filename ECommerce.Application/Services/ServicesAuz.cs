@@ -40,7 +40,7 @@ namespace ECommerce.Application.Services
                     ErrorType.BadRequest);
             }
 
-            await userManager.AddToRoleAsync(user, "Customer");
+            await userManager.AddToRoleAsync(user, "Seller");
 
             return Result.Success();
         }

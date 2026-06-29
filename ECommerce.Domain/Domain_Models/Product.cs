@@ -12,8 +12,8 @@ namespace ECommerce.Domain.Domain_Models
         Pending = 0,
         Approved = 1,
         Rejected = 2,
-        Hidden = 3,
-        OutOfStock = 4
+        //Hidden = 3,
+        //OutOfStock = 4
     }
     public class Product
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce.Application.Police
 {
-    public class CanDeleteOrUpdateProductRequirement: IAuthorizationRequirement
+    public class CanMangeSellerProductRequirement: IAuthorizationRequirement
     {
     }
 }

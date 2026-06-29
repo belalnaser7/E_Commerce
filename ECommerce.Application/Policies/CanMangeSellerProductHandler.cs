@@ -4,18 +4,12 @@ using System.Security.Claims;
 
 namespace ECommerce.Application.Police
 {
-    public class CanDeleteOrUpdateProductHandler : AuthorizationHandler<CanDeleteOrUpdateProductRequirement, Product>
+    public class CanMangeSellerProductHandler : AuthorizationHandler<CanMangeSellerProductRequirement, Product>
     {
-        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CanDeleteOrUpdateProductRequirement requirement, Product resource)
+        protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, CanMangeSellerProductRequirement requirement, Product resource)
         {
             var userid = context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var isAdmin = context.User.IsInRole("Admin");
-            if(isAdmin)
-            {
-              context.Succeed(requirement);
-               
-                return Task.CompletedTask;
-            }
+           
             var IsSeller = context.User.IsInRole("Seller");
             if (IsSeller&&resource.SellerId==userid)
             {

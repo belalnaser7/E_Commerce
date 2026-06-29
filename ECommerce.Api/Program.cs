@@ -43,7 +43,7 @@ builder.Services.AddScoped<IServicesOrder, ServicesOrder>();
 builder.Services.AddScoped<IServicesAuz, ServicesAuz>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //builder.Services.AddScoped<AuthorizationHandler<CanDeleteProductRequirement,Product>, CanDeleteProductHandler>();
-builder.Services.AddScoped<IAuthorizationHandler, CanDeleteOrUpdateProductHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, CanMangeSellerProductHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, CanViewCartHandler>();
 builder.Services.AddScoped<IAuthorizationHandler, AccessUserOnHisOrderHandler>();
 builder.Services.AddScoped<ICacheService, CacheService>();

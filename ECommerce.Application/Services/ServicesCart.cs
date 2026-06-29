@@ -37,10 +37,9 @@ namespace ECommerce.Application.Services
 
         public async Task<Result> AddToCartAsync(string userId, AddToCartDto dto)
         {
-            //if (dto.Quantity <= 0)
-            //    return Result.Fail("The Product Quantity Invalid");
+            
 
-            var product = await unitOfWork.Products.GetByIdAsync(dto.ProductId);
+            var product = await unitOfWork.Products.GetByStatusIdAsync(dto.ProductId,ProductStatus.Approved);
             if (product is null)
             {
                 return Result.Fail("The Product isn't Exsit");

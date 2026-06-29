@@ -1,4 +1,4 @@
-﻿using ECommerce.Application.DTOs;
+﻿
 using ECommerce.Application.Interfaces;
 using ECommerce.Domain.Domain_Models;
 using ECommerce.Infrastructure.Data;
@@ -25,17 +25,31 @@ namespace ECommerce.Infrastructure.Repositories
             context.Remove(product);
         }
 
-        public  async Task<IEnumerable<Product>> GetAllAsync()=>
-        await context.Products.ToListAsync();
-        
+        public async Task<IEnumerable<Product>> GetByStatusAsync(ProductStatus productStatus) 
+        {
+            return await context.Products.Where(status=>status.Status==productStatus).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Product>> GetBySellerIdAsync(string sellerId)
+        {
+            return await context.Products.Where(i=>i.SellerId==sellerId).ToListAsync();
+        }
 
         public Task<Product?> GetByIdAsync(int id)
         {
             return context.Products.FirstOrDefaultAsync(i => i.Id == id);
         }
+        public Task<Product?> GetByStatusIdAsync(int id, ProductStatus productStatus)
+        {
+            return context.Products.Where(status => status.Status == productStatus).FirstOrDefaultAsync(i => i.Id == id);
+        }
 
-       
+        //public Task<Product?> UpdateStatusOnlyAdmins(int id)
+        //{
+        //    return context.Products.FirstOrDefaultAsync(i => i.Id == id);
+        //}
 
-    
+
+
     }
 }
